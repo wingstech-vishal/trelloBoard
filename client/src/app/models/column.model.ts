@@ -9,8 +9,8 @@ export interface Comment {
     // startDateTime: Date;
     // endDateTime: Date;
     description: string;
-    priority: string;
-    status: string; 
+    // priority: string;
+    // status: string; 
     like: number,
     comments: Comment[]
   }

@@ -17,7 +17,7 @@ export class BoardService {
           text: 'Example card item',
           // startDateTime: "2012-04-23T18:25:43.511Z"  ,
           // endDateTime: "2012-04-27T18:25:43.511Z" ,
-          description: 'Trello bord card example item',
+          description: 'Trello board  example',
           priority: 'list component' ,
           status: 'pending',
           like: 1,
@@ -66,9 +66,8 @@ export class BoardService {
     // startDateTime: Date,
     // endDateTime: Date,
     description: string,
-    priority: string,
-    status: string
-    
+    // priority: string,
+    // status: string 
     ) {
     const newCard: Card = {
       id: Date.now(),
@@ -76,12 +75,13 @@ export class BoardService {
       // startDateTime: startDateTime,
       // endDateTime: endDateTime,
       description: description,
-      priority: priority,
-      status: status,
+      // priority: priority,
+      // status: status,
       like: 0,
       comments: [],
     };
-
+    console.log(newCard)
+    
     this.board = this.board.map((column: Column) => {
       if (column.id === columnId) {
         column.list = [newCard, ...column.list];

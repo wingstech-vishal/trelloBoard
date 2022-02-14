@@ -30,8 +30,8 @@ export class BoardComponent implements OnInit {
     // startDateTime: Date,
     // endDateTime: Date,
     description: string,
-    priority: string,
-    status: string
+    // priority: string,
+    // status: string
     ) {
     if(text) {
       this.boardService.addCard(text, 
@@ -39,8 +39,9 @@ export class BoardComponent implements OnInit {
         // startDateTime,
         //  endDateTime, 
          description, 
-         priority, 
-         status)
+        //  priority, 
+        //  status
+        )
     }
   }
 
