@@ -1,0 +1,121 @@
+<div mat-dialog-content>
+  <h3>{{ data.question }}</h3>
+
+  <!-- title -->
+  <mat-form-field class="w-100">
+    <mat-label>Add Title</mat-label>
+    <input
+      matInput
+      type="text"
+      name="title"
+      ngModel
+      required
+      minlength="3"
+      placeholder="Title"
+      #title="ngModel"
+      [(ngModel)]="data.text"
+    />
+    <mat-error *ngIf="title.invalid">Please enter a Title.</mat-error>
+  </mat-form-field>
+
+  <!-- start date/time -->
+
+  <!-- <mat-form-field class="w-100">
+            <input
+              matInput
+              type="datetime-local"
+              name="startDateTime"
+              ngModel
+              minlength="3"
+              placeholder="Start Date/Time"
+              #startDateTime="ngModel"
+              [(ngModel)] = "data.startDateTime"
+            />
+       
+          </mat-form-field> -->
+
+  <!-- end date/time -->
+
+  <!-- <mat-form-field class="w-100">
+            <input
+              matInput
+              type="datetime-local"
+              name="endDateTime"
+              ngModel
+              minlength="3"
+              placeholder="End Date/Time"
+              #endDateTime="ngModel"
+              [(ngModel)] = "data.endDateTime"
+            />
+          
+          </mat-form-field> -->
+
+  <!-- description -->
+  <mat-form-field class="w-100">
+    <textarea
+      matInput
+      rows="1"
+      name="description"
+      ngModel
+      placeholder="Description"
+      #description="ngModel"
+      [(ngModel)]="data.description"
+    ></textarea>
+    <!-- <mat-error *ngIf="description.invalid">Please enter a Todo Description.</mat-error> -->
+  </mat-form-field>
+
+  <!-- priority -->
+  <mat-form-field class="w-100">
+    <textarea
+      matInput
+      rows="1"
+      name="priority"
+      ngModel
+      placeholder="Priority"
+      #priority="ngModel"
+      [(ngModel)]="data.priority"
+    ></textarea>
+    <!-- <mat-error *ngIf="priority.invalid">Please enter a Todo Priority.</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="w-100">
+    <!-- <input
+              matInput
+              type="text"
+              name="status"
+              ngModel
+              minlength="3"
+              placeholder="Status"
+              #status="ngModel"
+              [(ngModel)] = "data.status"
+            /> -->
+
+    <mat-label>Status</mat-label>
+    <mat-select>
+      <mat-option
+        #status="ngModel"
+        [(ngModel)]="data.status"
+        name="status"
+        ngModel
+        *ngFor="let status of status"
+        [value]="status.value"
+      >
+        {{ status.viewValue }}
+      </mat-option>
+    </mat-select>
+    <!-- <mat-error *ngIf="status.invalid">Please enter a Todo Status.</mat-error> -->
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    mat-raised-button
+    [mat-dialog-close]="data.text"
+    cdkFocusInitial
+    color="primary"
+    type="submit"
+  >
+    Confirm
+  </button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
