@@ -20,7 +20,7 @@
 
   <!-- start date/time -->
 
-  <!-- <mat-form-field class="w-100">
+  <mat-form-field class="w-100">
             <input
               matInput
               type="datetime-local"
@@ -32,11 +32,11 @@
               [(ngModel)] = "data.startDateTime"
             />
        
-          </mat-form-field> -->
+          </mat-form-field>
 
   <!-- end date/time -->
 
-  <!-- <mat-form-field class="w-100">
+  <mat-form-field class="w-100">
             <input
               matInput
               type="datetime-local"
@@ -48,7 +48,7 @@
               [(ngModel)] = "data.endDateTime"
             />
           
-          </mat-form-field> -->
+          </mat-form-field>
 
   <!-- description -->
   <mat-form-field class="w-100">
@@ -110,7 +110,7 @@
 <div mat-dialog-actions>
   <button
     mat-raised-button
-    [mat-dialog-close]="data.text"
+    [mat-dialog-close]="[{text:data.text,description:data.description, priority:data.priority,  status:data.status, startDateTime:data.startDateTime, endDateTime:data.endDateTime }]"
     cdkFocusInitial
     color="primary"
     type="submit"

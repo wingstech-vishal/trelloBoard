@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import {BoardService} from 'src/app/services/board.service'
 
 interface Status {
   value: string;
@@ -12,6 +14,7 @@ interface Status {
 })
 export class DialogBodyComponent implements OnInit {
 
+
   status: Status[] = [
     {value: 'holding-0', viewValue: 'Holding'},
     {value: 'Started-1', viewValue: 'Started'},
@@ -20,7 +23,8 @@ export class DialogBodyComponent implements OnInit {
 
 
   constructor( public dialogRef: MatDialogRef<DialogBodyComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any
+    @Inject(MAT_DIALOG_DATA) public data:any,
+    public boardService: BoardService
     ) {}
 
     onNoClick(): void {
@@ -29,5 +33,7 @@ export class DialogBodyComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+ 
 
 }

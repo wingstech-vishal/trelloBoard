@@ -6,18 +6,20 @@
 
     <mat-accordion >
       <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <strong>Title:-</strong>{{ item.text }}
+        
+        <mat-expansion-panel-header *ngIf="item.text.length > 0">
+          <strong>Title:-</strong>{{ item.text[0].text }}
         </mat-expansion-panel-header>
         <hr>
-        <!--  <p><strong>Start Date/Time:-</strong>{{ todo.startdatetime }}</p>
-        <p><strong>End Date/Time:-</strong>{{ todo.enddatetime }}</p> -->
-
-        <p><strong>Description:-</strong>{{ item.description }}</p>
+         <p *ngIf="item.text.length > 0"><strong>Start Date/Time:-</strong>{{ item.text[0].startDateTime }}</p>
+         <hr>
+        <p  *ngIf="item.text.length > 0"><strong>End Date/Time:-</strong>{{ item.text[0].endDateTime }}</p>
         <hr>
-        <p><strong>Priority:-</strong>{{ item.priority }}</p>
+        <p *ngIf="item.text.length > 0"><strong>Description:-</strong>{{ item.text[0].description }}</p>
         <hr>
-        <p><strong>Status:-</strong>{{ item.status }}</p> 
+        <p *ngIf="item.text.length > 0" ><strong>Priority:-</strong>{{ item.text[0].priority }}</p>
+        <hr>
+        <p *ngIf="item.text.length > 0" ><strong>Status:-</strong>{{ item.text[0].status }}</p> 
         <hr>
         <mat-action-row>
           <button mat-button color="primary">EDIT</button>

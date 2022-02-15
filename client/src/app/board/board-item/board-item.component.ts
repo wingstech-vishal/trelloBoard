@@ -8,7 +8,7 @@ import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 export class BoardItemComponent implements OnInit {
 
   @Input() item;
-  @Output() emitText: EventEmitter<{id: number; text:string}> = new EventEmitter();
+  @Output() emitText: EventEmitter<{id: number; text:string; item:any;}> = new EventEmitter();
   @Output() emitCardItem: EventEmitter<{card: any; increase:boolean}> = new EventEmitter();
   @Output() emitDeleteCard: EventEmitter<number> = new EventEmitter();
   
@@ -16,7 +16,7 @@ export class BoardItemComponent implements OnInit {
   open = false;
 
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
@@ -26,7 +26,7 @@ export class BoardItemComponent implements OnInit {
   }
 
   onCommentTextEmit(id:number) {
-    this.emitText.emit({id, text:this.commentInput});
+    this.emitText.emit({id, text:this.commentInput, item:this.item});
     this.commentInput= ''
   }
 
