@@ -15,8 +15,8 @@ export class BoardService {
         {
           id: 1,
           text: 'Example card item',
-          // startDateTime: "2012-04-23T18:25:43.511Z"  ,
-          // endDateTime: "2012-04-27T18:25:43.511Z" ,
+          startDateTime: "18-Feb-2022 03:46 PM" ,
+          endDateTime: "18-Feb-2022 03:46 PM" ,
           description: 'Trello board  example',
           priority: 'list component' ,
           status: 'pending',
@@ -91,11 +91,13 @@ export class BoardService {
 
     this.board$.next([...this.board]);
   }
+  
 
   deleteColumn(columnId) {
     this.board = this.board.filter((column: Column) => column.id !== columnId);
     this.board$.next([...this.board]);
   }
+  
 
   deleteCard(cardId: number, columnId: number) {
     this.board = this.board.map((column: Column) => {

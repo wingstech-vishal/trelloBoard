@@ -18,6 +18,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('BOARD - INIT')
+    console.log(this.boardService.getBoard$())
   }
 
   onColorChange(color: string, columnId: number) {

@@ -1,4 +1,8 @@
+
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
+  <form #postForm="ngForm" > 
 <div mat-dialog-content>
+
   <h3>{{ data.question }}</h3>
 
   <!-- title -->
@@ -119,3 +123,4 @@
   </button>
   <button mat-button (click)="onNoClick()">Cancel</button>
 </div>
+<!-- </form> --></form>

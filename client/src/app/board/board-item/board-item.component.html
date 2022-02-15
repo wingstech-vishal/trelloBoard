@@ -11,18 +11,18 @@
           <strong>Title:-</strong>{{ item.text[0].text }}
         </mat-expansion-panel-header>
         <hr>
-         <p *ngIf="item.text.length > 0"><strong>Start Date/Time:-</strong>{{ item.text[0].startDateTime }}</p>
+         <p *ngIf="item.text.length > 0"><strong>Start Date/Time:- &nbsp;</strong>{{ item.text[0].startDateTime }}</p>
          <hr>
-        <p  *ngIf="item.text.length > 0"><strong>End Date/Time:-</strong>{{ item.text[0].endDateTime }}</p>
+        <p  *ngIf="item.text.length > 0"><strong>End Date/Time:- &nbsp;</strong>{{ item.text[0].endDateTime }}</p>
         <hr>
-        <p *ngIf="item.text.length > 0"><strong>Description:-</strong>{{ item.text[0].description }}</p>
+        <p *ngIf="item.text.length > 0"><strong>Description:- &nbsp;</strong>{{ item.text[0].description }}</p>
         <hr>
-        <p *ngIf="item.text.length > 0" ><strong>Priority:-</strong>{{ item.text[0].priority }}</p>
+        <p *ngIf="item.text.length > 0" ><strong>Priority:- &nbsp;</strong>{{ item.text[0].priority }}</p>
         <hr>
-        <p *ngIf="item.text.length > 0" ><strong>Status:-</strong>{{ item.text[0].status }}</p> 
+        <p *ngIf="item.text.length > 0" ><strong>Status:- &nbsp;</strong>{{ item.text[0].status }}</p> 
         <hr>
         <mat-action-row>
-          <button mat-button color="primary">EDIT</button>
+          <button mat-button color="primary" (click)="onEdit(item)" >EDIT</button>
           <button mat-button (click)="onCardDelete(item.id)" color="warn">DELETE</button>
         </mat-action-row>
       </mat-expansion-panel>
