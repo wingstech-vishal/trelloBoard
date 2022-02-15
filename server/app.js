@@ -2,12 +2,14 @@ const express = require('express');
 const res = require('express/lib/response');
 const app = express();
 // const routes = require('./routes/cards');
-const { MONGOURI } = require('./keys');
+// const { MONGOURI } = require('./keys');
+// const { JWT_SECRET } = require('./keys')
 
 // const login = require('./api/routes/login');
 const students = require('./api/routes/students');
 const users = require('./api/routes/user');
 const cards = require('./api/routes/cards');
+const columns = require('./api/routes/columns');
 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -29,6 +31,7 @@ app.use(bodyParser.json());
 app.use('/students', students);
 app.use('/users', users);
 app.use('/cards', cards);
+app.use('/columns', columns)
 
 
 // app.use((req, res, next) => (

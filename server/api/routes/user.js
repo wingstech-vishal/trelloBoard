@@ -6,7 +6,7 @@ const User = require('../model/users');
 const bcrypt =  require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // const { JWT_SECRET } = require('../keys')
-// const checkToken = require('../middleware/check-auth');
+const checkToken = require('../middleware/check-auth');
 
 router.post('/signup', (req, res, next) => {
     // res.status(200).json({
@@ -66,7 +66,7 @@ router.post('/login', (req, res, next) => {
                    phone: user[0].phone
                },
             //    console.log(token),
-               'Secret Key',
+            //    'Secret Key',
                {
                    expiresIn: "1h"
                }

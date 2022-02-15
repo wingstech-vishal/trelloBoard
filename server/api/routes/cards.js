@@ -30,8 +30,9 @@ router.post('/', (req, res, next) => {
 });
 
 //Get card data
-router.get('/', (req, res, next) => {
+router.get('/all', (req, res, next) => {
     Card.find()
+    // .populate("likes", "_id")
     .then(result => {
         res.status(200).json({
             cardData: result
