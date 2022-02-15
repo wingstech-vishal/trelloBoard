@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Card, Column, Comment } from '../models/column.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,11 @@ export class BoardService {
     },
   ]
 
+  constructor(private http: HttpClient) { }
+
+  API = 'http://localhost:3000';
+
+
   private board: Column[] = this.initBoard
   private board$ = new BehaviorSubject<Column[]>(this.initBoard)
 
@@ -59,6 +65,10 @@ export class BoardService {
 
     this.board = [...this.board, newColumn];
     this.board$.next([...this.board]);
+
+    return this.http.post(this.API + '/columns',title );
+    console.log("Check data", title);
+    
   }
 
   addCard(text: string, 

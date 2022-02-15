@@ -19,8 +19,8 @@
         <hr>
         <p *ngIf="item.text.length > 0" ><strong>Priority:- &nbsp;</strong>{{ item.text[0].priority }}</p>
         <hr>
-        <p *ngIf="item.text.length > 0" ><strong>Status:- &nbsp;</strong>{{ item.text[0].status }}</p> 
-        <hr>
+        <!-- <p *ngIf="item.text.length > 0" ><strong>Status:- &nbsp;</strong>{{ item.text[0].status }}</p> 
+        <hr> -->
         <mat-action-row>
           <button mat-button color="primary" (click)="onEdit(item)" >EDIT</button>
           <button mat-button (click)="onCardDelete(item.id)" color="warn">DELETE</button>
