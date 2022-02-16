@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 
 
+
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { ColumnDialogBodyComponent } from './column-dialog-body/column-dialog-body.component';
@@ -28,7 +29,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     FormsModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    
   ],
   exports: [
     DialogComponent,

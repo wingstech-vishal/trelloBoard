@@ -15,9 +15,12 @@ export class HeaderComponent implements OnInit {
   }
 
  addColumn(event: string) {
-   if(event){
+    if(event){
      this.boardService.addColumn(event)
    }
+  //  this.boardService.addColumn(event).subscribe(
+  
+  //  );
  }
-
+ 
 }

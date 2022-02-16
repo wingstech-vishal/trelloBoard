@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Card, Column, Comment } from '../models/column.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class BoardService {
         {
           id: 1,
           text: 'Example card item',
-          // startDateTime: "2012-04-23T18:25:43.511Z"  ,
-          // endDateTime: "2012-04-27T18:25:43.511Z" ,
+          startDateTime: "18-Feb-2022 03:46 PM" ,
+          endDateTime: "18-Feb-2022 03:46 PM" ,
           description: 'Trello board  example',
           priority: 'list component' ,
           status: 'pending',
@@ -31,6 +32,11 @@ export class BoardService {
       ]
     },
   ]
+
+  constructor(private http: HttpClient) { }
+
+  API = 'http://localhost:3000';
+
 
   private board: Column[] = this.initBoard
   private board$ = new BehaviorSubject<Column[]>(this.initBoard)
@@ -59,6 +65,10 @@ export class BoardService {
 
     this.board = [...this.board, newColumn];
     this.board$.next([...this.board]);
+
+    return this.http.post(this.API + '/columns',title );
+    console.log("Check data", title);
+    
   }
 
   addCard(text: string, 
@@ -91,11 +101,13 @@ export class BoardService {
 
     this.board$.next([...this.board]);
   }
+  
 
   deleteColumn(columnId) {
     this.board = this.board.filter((column: Column) => column.id !== columnId);
     this.board$.next([...this.board]);
   }
+  
 
   deleteCard(cardId: number, columnId: number) {
     this.board = this.board.map((column: Column) => {

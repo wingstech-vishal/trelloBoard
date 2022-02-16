@@ -21,6 +21,8 @@ export class DialogBodyComponent implements OnInit {
     {value: 'finished-2', viewValue: 'Finished'},
   ];
 
+  userId:any;
+
 
   constructor( public dialogRef: MatDialogRef<DialogBodyComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
@@ -32,6 +34,10 @@ export class DialogBodyComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.userId = this.data?.cardData;
+    
+    // this.data = this.data?.cardData;
+    console.log("this.userId",this.userId);
   }
 
  
