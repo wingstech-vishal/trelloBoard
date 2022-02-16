@@ -7,6 +7,7 @@ const bcrypt =  require('bcryptjs');
 const jwt = require('jsonwebtoken');
 // const { JWT_SECRET } = require('../keys')
 const checkToken = require('../middleware/check-auth');
+const app = require('../../app');
 
 router.post('/signup', (req, res, next) => {
     // res.status(200).json({
@@ -41,6 +42,10 @@ router.post('/signup', (req, res, next) => {
             })
         }
     })
+})
+
+router.get('/signup', (req, res, next) => {
+    res.render('signup.ejs')
 })
 
 router.post('/login', (req, res, next) => {

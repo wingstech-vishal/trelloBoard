@@ -1,6 +1,8 @@
 const express = require('express');
 const res = require('express/lib/response');
 const app = express();
+
+app.set('view-engine', 'ejs')
 // const routes = require('./routes/cards');
 // const { MONGOURI } = require('./keys');
 // const { JWT_SECRET } = require('./keys')
@@ -24,6 +26,19 @@ mongoose.connection.on('connected', connected => {
     console.log('Connected Successfully with Database');
 })
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    next();
+  });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -31,7 +46,7 @@ app.use(bodyParser.json());
 app.use('/students', students);
 app.use('/users', users);
 app.use('/cards', cards);
-app.use('/columns', columns)
+app.use('/columns', columns);
 
 
 // app.use((req, res, next) => (
@@ -44,6 +59,16 @@ app.use((req, res, next) => {
     res.status(404).json({
         error: 'Bad Request'
     })
+    
+    // res.render('index.ejs');
 })
+
+// app.use('/signup', (req, res, next) => {
+//     res.render('signup.ejs')
+// })
+
+// app.get('/users/signup', (req, res, next) => {
+//     res.render('signup.ejs')
+// })
 
 module.exports = app;
