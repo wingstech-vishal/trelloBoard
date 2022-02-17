@@ -23,12 +23,13 @@ export class HeaderComponent implements OnInit {
   }
 
  addColumn(columnTitle: string) {
-    if(columnTitle){
-     this.boardService.addColumn(columnTitle)
-   }
-  //  this.boardService.addColumn(columnTitle).subscribe(
+  //   if(columnTitle){
+  //    this.boardService.addColumn(columnTitle)
+  //  }
+   this.boardService.addColumn(columnTitle).subscribe(
   
-  //  );
+   );
+   
  }
  
 

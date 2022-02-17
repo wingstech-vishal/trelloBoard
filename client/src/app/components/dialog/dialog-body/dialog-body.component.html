@@ -1,6 +1,6 @@
 
 <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()"> -->
-  <form #postForm="ngForm" > 
+  <form #cardForm="ngForm" (ngSubmit)="onSubmit(cardForm)" > 
 <div mat-dialog-content>
 
   <h3>{{ data.question }}</h3>
