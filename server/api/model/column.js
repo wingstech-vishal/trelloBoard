@@ -6,4 +6,17 @@ const columnSchema =  new mongoose.Schema({
     title: String,
 })
 
+columnSchema.statics.isTitleExist = async function(title) {
+    try {
+        const title = await this.findOne({ title })
+        if (title) return false;
+
+        return true;
+    }
+    catch (err) {
+        console.log('Error inside isTitleExist method' , err.message);
+        return false
+    }
+}
+
 module.exports = mongoose.model('Column', columnSchema);
