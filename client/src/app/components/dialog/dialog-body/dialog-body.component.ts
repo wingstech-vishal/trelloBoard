@@ -40,6 +40,13 @@ export class DialogBodyComponent implements OnInit {
     console.log("this.userId",this.userId);
   }
 
- 
+ onSubmit(data){
+    console.log(data.value);
+    // this.boardService.addColumn(this.data).subscribe((result:any) =>{
+    //   console.log(result.data)
+    // }, error =>{
+    //   console.log(error);
+    // })
+  }
 
 }

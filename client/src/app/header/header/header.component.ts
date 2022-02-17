@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Column } from 'src/app/models/column.model';
 import {BoardService} from 'src/app/services/board.service'
 
 @Component({
@@ -7,6 +9,12 @@ import {BoardService} from 'src/app/services/board.service'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  // enteredTitle = "";
+  // newColumn: Column
+  // isLoading = false;
+  // private mode = "create";
+  // private postId: string;
   
   constructor( public boardService: BoardService)
    { }
@@ -14,13 +22,28 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
- addColumn(event: string) {
-    if(event){
-     this.boardService.addColumn(event)
-   }
-  //  this.boardService.addColumn(event).subscribe(
+ addColumn(columnTitle: string) {
+  //   if(columnTitle){
+  //    this.boardService.addColumn(columnTitle)
+  //  }
+   this.boardService.addColumn(columnTitle).subscribe(
   
-  //  );
+   );
+   
  }
  
+
+// onSavePost(form: NgForm) {
+//   if (form.invalid) {
+//     return;
+//   }
+
+//   if (this.mode === "create") {
+//     this.boardService.addColumn(form.value.title);
+//   }
+//   form.resetForm();
+// }
+
+
+
 }
