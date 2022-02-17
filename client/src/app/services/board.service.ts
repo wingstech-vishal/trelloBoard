@@ -10,7 +10,7 @@ export class BoardService {
   private initBoard = [ 
     {
       id: 1,
-      title: 'To Do',
+      columnTitle: 'To Do',
       color: '#009886',
       list: [
         {
@@ -55,10 +55,10 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addColumn(title: string) {
+  addColumn(columnTitle: string) {
     const newColumn: Column = {
       id: Date.now(),
-      title: title,
+      columnTitle: columnTitle,
       color: '#009886',
       list: [],
     };
@@ -66,8 +66,8 @@ export class BoardService {
     this.board = [...this.board, newColumn];
     this.board$.next([...this.board]);
 
-    return this.http.post(this.API + '/columns',title );
-    console.log("Check data", title);
+    return this.http.post(this.API + '/columns',columnTitle );
+    // console.log("Check data", columnTitle);
     
   }
 
