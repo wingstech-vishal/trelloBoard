@@ -14,8 +14,9 @@
         <mat-error *ngIf="title.invalid">Please enter a Column title.</mat-error>
     </mat-form-field>
       
-
+    <div mat-dialog-actions>
     <button mat-raised-button [mat-dialog-close]="data.text" cdkFocusInitial color="primary" type="submit">Confirm</button>
     <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
 </form>
 </div>

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
+import { ParamMap } from '@angular/router';
 import { Column } from 'src/app/models/column.model';
 import { BoardService } from 'src/app/services/board.service';
 
@@ -10,6 +11,10 @@ import { BoardService } from 'src/app/services/board.service';
   styleUrls: ['./column-dialog-body.component.scss']
 })
 export class ColumnDialogBodyComponent implements OnInit {
+  route: any;
+  mode: string;
+  columnId: any;
+  column: { id: string; title: string; color: string };
 
   // enteredTitle = "";
   // newColumn: Column
@@ -27,6 +32,26 @@ export class ColumnDialogBodyComponent implements OnInit {
      
 
   ngOnInit(): void {
+
+    // this.route.paramMap.subscribe((paramMap: ParamMap) => {
+    //   if (paramMap.has("columnId")) {
+    //     this.mode = "edit";
+    //     this.columnId = paramMap.get("columnId");
+    //     this.boardService.getColumn().subscribe(columnData => {
+      
+    //       this.column = {id: columnData._id, title: columnData.title, color: columnData.color};
+    //     });
+    //   } else {
+    //     this.mode = "create";
+    //     this.columnId = null;
+    //   }
+    // });
+
+
+    // this.boardService.getColumn().subscribe(columnData => {
+      
+    //   this.column = {id: columnData._id, title: columnData.title, color: columnData.color};
+    // });
     
   }
 

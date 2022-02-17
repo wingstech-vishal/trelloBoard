@@ -28,31 +28,67 @@ export class BoardComponent implements OnInit {
   onAddCard(
     text: string,
     columnId: number, 
-    // startDateTime: Date,
-    // endDateTime: Date,
+    startDateTime: string,
+    endDateTime: string,
     description: string,
-    // priority: string,
+    priority: string,
     // status: string
     ) {
     if(text) {
       this.boardService.addCard(text, 
         columnId, 
-        // startDateTime,
-        //  endDateTime, 
+        startDateTime,
+         endDateTime, 
          description, 
-        //  priority, 
+         priority, 
         //  status
         )
     }
   }
 
+
+  // onAddCard(
+  //   text: string,
+  //   columnId: number, 
+  //   startDateTime: string,
+  //   endDateTime: string,
+  //   description: string,
+  //   priority: string,
+  //   // status: string
+  //   ) {
+  //   if(text) {
+  //     this.boardService.onAddCard(text).subscribe((result:any) =>{
+  //       console.log(result.text)
+  //     }, error =>{
+  //       console.log(error);
+  //     })
+  //   }
+  // }
+
+
   onDeleteColumn(columnId: number){
     this.boardService.deleteColumn(columnId)
   }
 
+  // deleteColumn(columnId: number){
+  //   this.boardService.deleteColumn(columnId).subscribe((result:any) =>{
+  //           console.log(result)
+  //         }, error =>{
+  //           console.log(error);
+  //         })
+  // }
+
   onDeleteCard(cardId: number, columnId: number){
     this.boardService.deleteCard(cardId, columnId)
   }
+
+  // onDeleteCard(cardId: number, columnId: number){
+  //   this.boardService.deleteCard(cardId, columnId).subscribe((result:any) =>{
+  //               console.log(result)
+  //             }, error =>{
+  //               console.log(error);
+  //             })
+  // }
 
   onChangeLike(event:{card: any, increase: boolean}, columnId: number){
     const{card: {id}, increase} = event

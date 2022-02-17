@@ -6,10 +6,10 @@ export interface Comment {
   export interface Card { 
     id: number,
     text: string,
-    // startDateTime: Date;
-    // endDateTime: Date;
+    startDateTime: string;
+    endDateTime: string;
     description: string;
-    // priority: string;
+    priority: string;
     // status: string; 
     like: number,
     comments: Comment[]

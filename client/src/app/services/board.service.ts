@@ -6,7 +6,13 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class BoardService { 
+export class BoardService {
+  onDeleteColumn(columnId: number) {
+    throw new Error('Method not implemented.');
+  }
+  onAddCard(text: string) {
+    throw new Error('Method not implemented.');
+  } 
   private initBoard = [ 
     {
       id: 1,
@@ -20,7 +26,7 @@ export class BoardService {
           endDateTime: "18-Feb-2022 03:46 PM" ,
           description: 'Trello board  example',
           priority: 'list component' ,
-          status: 'pending',
+          // status: 'pending',
           like: 1,
           comments: [
             { 
@@ -71,21 +77,27 @@ export class BoardService {
     
   }
 
+  // getColumn() {
+  //   return this.http.get<any>(this.API + '/columns');
+  // }
+
+
+
   addCard(text: string, 
-    columnId: number, 
-    // startDateTime: Date,
-    // endDateTime: Date,
+     columnId: number, 
+    startDateTime: string,
+    endDateTime: string,
     description: string,
-    // priority: string,
+    priority: string,
     // status: string 
     ) {
     const newCard: Card = {
       id: Date.now(),
       text:text,
-      // startDateTime: startDateTime,
-      // endDateTime: endDateTime,
+      startDateTime: startDateTime,
+      endDateTime: endDateTime,
       description: description,
-      // priority: priority,
+      priority: priority,
       // status: status,
       like: 0,
       comments: [],
@@ -100,12 +112,15 @@ export class BoardService {
     });
 
     this.board$.next([...this.board]);
+
+    return this.http.post<any>(this.API + '/cards', newCard );
   }
   
 
   deleteColumn(columnId) {
     this.board = this.board.filter((column: Column) => column.id !== columnId);
     this.board$.next([...this.board]);
+    return this.http.delete<any>(this.API + '/columns', columnId );
   } 
   
 
@@ -118,6 +133,8 @@ export class BoardService {
     });
 
     this.board$.next([...this.board]);
+
+    // return this.http.delete<any>(this.API + '/cards', columnId );
   }
 
   changeLike(cardId: number, columnId: number, increase: boolean) {
