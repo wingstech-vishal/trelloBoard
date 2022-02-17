@@ -66,7 +66,7 @@ export class BoardService {
     this.board = [...this.board, newColumn];
     this.board$.next([...this.board]);
 
-    return this.http.post(this.API + '/columns',columnTitle );
+    return this.http.post<any>(this.API + '/columns',columnTitle );
     // console.log("Check data", columnTitle);
     
   }

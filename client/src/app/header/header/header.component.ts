@@ -26,9 +26,11 @@ export class HeaderComponent implements OnInit {
   //   if(columnTitle){
   //    this.boardService.addColumn(columnTitle)
   //  }
-   this.boardService.addColumn(columnTitle).subscribe(
-  
-   );
+   this.boardService.addColumn(columnTitle).subscribe((result:any) =>{
+      console.log(result.columnTitle)
+    }, error =>{
+      console.log(error);
+    })
    
  }
  
