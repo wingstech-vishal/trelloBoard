@@ -9,6 +9,7 @@ router.post('/', (req, res, next) => {
     const column = new Column({
         _id: new mongoose.Types.ObjectId,
         title: req.body.title,
+        color: req.body.color
     })
     Column.isTitleExist()
     // Column.findOne({ title: req.body.title})

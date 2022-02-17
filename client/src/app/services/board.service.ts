@@ -10,7 +10,7 @@ export class BoardService {
   private initBoard = [ 
     {
       id: 1,
-      columnTitle: 'To Do',
+      title: 'To Do',
       color: '#009886',
       list: [
         {
@@ -55,19 +55,19 @@ export class BoardService {
     this.board$.next([...this.board]);
   }
 
-  addColumn(columnTitle: string) {
+  addColumn(title: string) {
     const newColumn: Column = {
       id: Date.now(),
-      columnTitle: columnTitle,
+      title: title,
       color: '#009886',
       list: [],
     };
 
     this.board = [...this.board, newColumn];
     this.board$.next([...this.board]);
-
-    return this.http.post<any>(this.API + '/columns',columnTitle );
-    // console.log("Check data", columnTitle);
+    
+    return this.http.post<any>(this.API + '/columns', newColumn );
+    // console.log("Check data", title);
     
   }
 
@@ -106,7 +106,7 @@ export class BoardService {
   deleteColumn(columnId) {
     this.board = this.board.filter((column: Column) => column.id !== columnId);
     this.board$.next([...this.board]);
-  }
+  } 
   
 
   deleteCard(cardId: number, columnId: number) {

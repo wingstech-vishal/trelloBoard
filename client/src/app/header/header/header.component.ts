@@ -22,12 +22,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
- addColumn(columnTitle: string) {
-  //   if(columnTitle){
-  //    this.boardService.addColumn(columnTitle)
+ addColumn(title: string) {
+  //   if(title){
+  //    this.boardService.addColumn(title)
   //  }
-   this.boardService.addColumn(columnTitle).subscribe((result:any) =>{
-      console.log(result.columnTitle)
+   this.boardService.addColumn(title).subscribe((result:any) =>{
+      console.log(result.title)
     }, error =>{
       console.log(error);
     })

@@ -17,7 +17,7 @@ export interface Comment {
   
   export interface Column { 
     id: number,
-    columnTitle: string,
+    title: string,
     color: string,
     list: Card[]
   }

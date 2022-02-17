@@ -4,6 +4,7 @@ const Column = require('../model/column');
 const columnSchema =  new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     title: String,
+    color: String
 })
 
 columnSchema.statics.isTitleExist = async function(title) {
