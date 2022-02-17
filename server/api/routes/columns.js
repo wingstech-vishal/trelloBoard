@@ -11,7 +11,7 @@ router.post('/', (req, res, next) => {
         title: req.body.title,
         color: req.body.color
     })
-    Column.isTitleExist()
+    // Column.isTitleExist()
     // Column.findOne({ title: req.body.title})
     // .then(res => {
     //     if(res.length != 0) {

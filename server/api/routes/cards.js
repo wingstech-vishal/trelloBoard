@@ -8,10 +8,11 @@ const Card = require('../model/card');
 router.post('/', (req, res, next) => {
     const card = new Card({
         _id: new mongoose.Types.ObjectId,
+        title: req.body.title,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         description: req.body.description,
-        category: req.body.category
+        priority: req.body.priority
     })
 
     card.save()
