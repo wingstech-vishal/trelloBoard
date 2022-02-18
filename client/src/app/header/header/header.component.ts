@@ -23,6 +23,8 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  // #Add Column
+
  addColumn(title: string) {
     if(title){
       

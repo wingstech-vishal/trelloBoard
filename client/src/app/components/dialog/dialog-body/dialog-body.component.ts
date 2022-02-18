@@ -34,10 +34,10 @@ export class DialogBodyComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.userId = this.data?.cardData;
+    // this.userId = this.data?.cardData;
     
     // this.data = this.data?.cardData;
-    console.log("this.userId",this.userId);
+    // console.log("this.userId",this.userId);
   }
 
  onSubmit(data){

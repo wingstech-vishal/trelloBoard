@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Card, Column, Comment } from '../models/column.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class BoardService {
+  AddCard(text: string) {
+    throw new Error('Method not implemented.');
+  }
   onDeleteColumn(columnId: number) {
     throw new Error('Method not implemented.');
   }
@@ -51,6 +54,9 @@ export class BoardService {
     return this.board$.asObservable()
   }
 
+
+  // #Change Color
+
   changeColumnColor(color: string, columnId: number) {
     this.board = this.board.map((column: Column) => {
       if (column.id === columnId) {
@@ -59,7 +65,13 @@ export class BoardService {
       return column;
     });
     this.board$.next([...this.board]);
+
+    // return this.http.post<any>(this.API + '/columns', newColumn );
+
   }
+
+
+  // #Add Column
 
   addColumn(title: string) {
     const newColumn: Column = {
@@ -73,15 +85,27 @@ export class BoardService {
     this.board$.next([...this.board]);
     
     return this.http.post<any>(this.API + '/columns', newColumn );
-    // console.log("Check data", title);
-    
+
   }
 
-  // getColumn() {
+
+    // #Delete Column
+
+    deleteColumn(columnId) {
+      this.board = this.board.filter((column: Column) => column.id !== columnId);
+      this.board$.next([...this.board]);
+      return this.http.delete<any>(this.API + '/columns', columnId );
+    } 
+
+
+  // #get column data
+
+  // getColumn(): Observable<any> {
   //   return this.http.get<any>(this.API + '/columns');
   // }
 
 
+// #Add Card
 
   addCard(text: string, 
      columnId: number, 
@@ -102,7 +126,8 @@ export class BoardService {
       like: 0,
       comments: [],
     };
-    console.log(newCard)
+    
+    // console.log(newCard)
     
     this.board = this.board.map((column: Column) => {
       if (column.id === columnId) {
@@ -116,13 +141,8 @@ export class BoardService {
     return this.http.post<any>(this.API + '/cards', newCard );
   }
   
-
-  deleteColumn(columnId) {
-    this.board = this.board.filter((column: Column) => column.id !== columnId);
-    this.board$.next([...this.board]);
-    return this.http.delete<any>(this.API + '/columns', columnId );
-  } 
   
+   // #Delete Card
 
   deleteCard(cardId: number, columnId: number) {
     this.board = this.board.map((column: Column) => {
@@ -136,6 +156,9 @@ export class BoardService {
 
     // return this.http.delete<any>(this.API + '/cards', columnId );
   }
+
+
+   // #Change Like 
 
   changeLike(cardId: number, columnId: number, increase: boolean) {
     this.board = this.board.map((column: Column) => {
@@ -161,7 +184,12 @@ export class BoardService {
     });
 
     this.board$.next([...this.board]);
+
+   return this.http.put<any>(this.API + '/likes', columnId );
   }
+
+
+  // #Add Comment
 
   addComment(columnId: number, cardId: number, text: string) {
     this.board = this.board.map((column: Column) => {
@@ -183,7 +211,12 @@ export class BoardService {
     });
 
     this.board$.next([...this.board]);
+
+    return this.http.put<any>(this.API + '/comment', columnId );
   }
+
+
+  // #Delete Comment
 
   deleteComment(columnId, itemId, commentId) {
     this.board = this.board.map((column: Column) => {
@@ -201,5 +234,7 @@ export class BoardService {
       return column
     })
     this.board$.next([...this.board])
+
+    // return this.http.delete<any>(this.API + '/comment', columnId );
   }
 }

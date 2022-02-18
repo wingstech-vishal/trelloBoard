@@ -5,6 +5,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/services/board.service';
+import { Column } from 'src/app/models/column.model';
 
 @Component({
   selector: 'app-board',
@@ -16,14 +17,31 @@ export class BoardComponent implements OnInit {
     public boardService: BoardService
   ) {}
 
+  // columnsList: Column[];
+
   ngOnInit(): void {
     console.log('BOARD - INIT')
     console.log(this.boardService.getBoard$())
+
+    //  #Get Columns
+
+  // this.boardService.getColumn().subscribe(
+  //   data => {
+  //     this.columnsList = data;
+  //   }
+  // )
+
+
   }
+
+  // #Change Color
 
   onColorChange(color: string, columnId: number) {
     this.boardService.changeColumnColor(color, columnId)
   }
+
+
+// #Add Card
 
   onAddCard(
     text: string,
@@ -46,7 +64,6 @@ export class BoardComponent implements OnInit {
     }
   }
 
-
   // onAddCard(
   //   text: string,
   //   columnId: number, 
@@ -66,17 +83,24 @@ export class BoardComponent implements OnInit {
   // }
 
 
+
+  // #Delete Column
+
+  // onDeleteColumn(columnId: number){
+  //   this.boardService.deleteColumn(columnId)
+  // }
+
   onDeleteColumn(columnId: number){
-    this.boardService.deleteColumn(columnId)
+    this.boardService.deleteColumn(columnId).subscribe((result:any) =>{
+            console.log(result)
+          }, error =>{
+            console.log(error);
+          })
   }
 
-  // deleteColumn(columnId: number){
-  //   this.boardService.deleteColumn(columnId).subscribe((result:any) =>{
-  //           console.log(result)
-  //         }, error =>{
-  //           console.log(error);
-  //         })
-  // }
+
+
+   // #Delete Card
 
   onDeleteCard(cardId: number, columnId: number){
     this.boardService.deleteCard(cardId, columnId)
@@ -90,20 +114,57 @@ export class BoardComponent implements OnInit {
   //             })
   // }
 
+
+ // #Change Like 
+
+  // onChangeLike(event:{card: any, increase: boolean}, columnId: number){
+  //   const{card: {id}, increase} = event
+  //   this.boardService.changeLike(id, columnId, increase)
+  // }
+
+
   onChangeLike(event:{card: any, increase: boolean}, columnId: number){
     const{card: {id}, increase} = event
-    this.boardService.changeLike(id, columnId, increase)
+    this.boardService.changeLike(id, columnId, increase).subscribe((result:any) =>{
+      console.log(result)
+    }, error =>{
+      console.log(error);
+    })
+}
 
-  }
+// #Add Comment
+
+  // onAddComment(event: {id: number, text:string}, columnId: number){
+  //   this.boardService.addComment(columnId, event.id, event.text)
+  // }
 
   onAddComment(event: {id: number, text:string}, columnId: number){
-    this.boardService.addComment(columnId, event.id, event.text)
-  }
+    this.boardService.addComment(columnId, event.id, event.text).subscribe((result:any) =>{
+      console.log(result)
+    }, error =>{
+      console.log(error);
+    })
+}
+
+
+// #Delete Comment
 
   onDeleteComment(comment, columnId, item){
     this.boardService.deleteComment(columnId, item.id, comment.id)
-
   }
+
+
+//   onDeleteComment(comment, columnId, item){
+//     this.boardService.deleteComment(columnId, item.id, comment.id).subscribe((result:any) =>{
+//       console.log(result)
+//     }, error =>{
+//       console.log(error);
+//     })
+// }
+
+
+
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
