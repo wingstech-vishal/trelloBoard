@@ -100,9 +100,9 @@ export class BoardService {
 
   // #get column data
 
-  // getColumn(): Observable<any> {
-  //   return this.http.get<any>(this.API + '/columns');
-  // }
+  getColumn(): Observable<any> {
+    return this.http.get<any>(this.API + '/columns');
+  }
 
 
 // #Add Card

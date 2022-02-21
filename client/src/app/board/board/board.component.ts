@@ -30,7 +30,7 @@ export class BoardComponent implements OnInit {
   //     this.columnsList = data;
   //   }
   // )
-
+  this.getColumns();
 
   }
 
@@ -99,7 +99,13 @@ export class BoardComponent implements OnInit {
   }
 
 
-
+  getColumns(){
+    this.boardService.getColumn().subscribe((result:any) =>{
+            console.log(result)
+          }, error =>{
+            console.log(error);
+          })
+  }
    // #Delete Card
 
   onDeleteCard(cardId: number, columnId: number){
