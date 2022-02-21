@@ -89,7 +89,7 @@ router.delete('/:id', (req, res, next) => {
 })
 
 //Like api
-router.put('/likes', (req, res, next) => {
+router.put('/likes/:id', (req, res, next) => {
     Card.findByIdAndUpdate(req.params.id, {
         $push:{likes: req.body.likes}
     }, {
@@ -106,7 +106,7 @@ router.put('/likes', (req, res, next) => {
 })
 
 //Unlike api
-router.put('/unlike', (req, res, next) => {
+router.put('/unlike/:id', (req, res, next) => {
     Card.findByIdAndUpdate(req.params.id, {
         $pull:{likes: req.body.likes}
     }, {
@@ -122,8 +122,9 @@ router.put('/unlike', (req, res, next) => {
     })
 })
 
+
 //Comment api
-router.put('/comment', (req, res, next) => {
+router.put('/comment/:id', (req, res, next) => {
     const comment = {
         text: req.body.text,
         postedBy: req.use
@@ -143,10 +144,27 @@ router.put('/comment', (req, res, next) => {
     })
 })
 
-//Delete comment api
-// router.delete('/', (req, res, next) => {
+// Delete comment api
+router.put('/comment/:id', (req, res, next) => {
+    const comment = {
+        text: req.body.text,
+        postedBy: req.use
+    }
+    Card.findByIdAndUpdate(req.params.id, {
+        $pull:{likes: req.body.likes}
+    }, {
+        new: true 
+    }).exec((err, result) => {
+        if(err) {
+            return res.status(500).json({
+                error: err
+            })
+        } else{
+            res.json(result)
+        }
+    })
+})
 
-// })
 
 
 module.exports = router;

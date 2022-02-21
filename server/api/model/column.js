@@ -7,19 +7,6 @@ const columnSchema =  new mongoose.Schema({
     color: String
 })
 
-// columnSchema.statics.isTitleExist = async function(title) {
-//     try {
-//         const title = await this.findOne({ title })
-//         if (title) return false;
-
-//         return true;
-//     }
-//     catch (err) {
-//         console.log('Error inside isTitleExist method' , err.message);
-//         return false
-//     }
-// }
-
 columnSchema.path('title').validate(async (title) => {
     const titleCount = await mongoose.models.Column.countDocuments({ title })
     return !titleCount
