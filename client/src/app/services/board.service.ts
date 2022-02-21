@@ -22,22 +22,22 @@ export class BoardService {
       title: 'To Do',
       color: '#009886',
       list: [
-        {
-          id: 1,
-          text: 'Example card item',
-          startDateTime: "18-Feb-2022 03:46 PM" ,
-          endDateTime: "18-Feb-2022 03:46 PM" ,
-          description: 'Trello board  example',
-          priority: 'list component' ,
-          // status: 'pending',
-          like: 1,
-          comments: [
-            { 
-              id: 1,
-              text: 'Some comment'
-            }
-          ]
-        },
+        // {
+        //   id: 1,
+        //   text: 'Example card item',
+        //   startDateTime: "18-Feb-2022 03:46 PM" ,
+        //   endDateTime: "18-Feb-2022 03:46 PM" ,
+        //   description: 'Trello board  example',
+        //   priority: 'list component' ,
+        //   // status: 'pending',
+        //   like: 1,
+        //   comments: [
+        //     { 
+        //       id: 1,
+        //       text: 'Some comment'
+        //     }
+        //   ]
+        // },
       ]
     },
   ]
@@ -66,7 +66,7 @@ export class BoardService {
     });
     this.board$.next([...this.board]);
 
-    // return this.http.post<any>(this.API + '/columns', newColumn );
+    // return this.http.post<any>(this.API + '/columns', columnId );
 
   }
 
@@ -94,7 +94,8 @@ export class BoardService {
     deleteColumn(columnId) {
       this.board = this.board.filter((column: Column) => column.id !== columnId);
       this.board$.next([...this.board]);
-      return this.http.delete<any>(this.API + '/columns', columnId );
+      
+      return this.http.delete<any>(this.API + '/columns/:id', columnId );
     } 
 
 
@@ -235,6 +236,6 @@ export class BoardService {
     })
     this.board$.next([...this.board])
 
-    // return this.http.delete<any>(this.API + '/comment', columnId );
+    return this.http.delete<any>(this.API + '/comment/:id', columnId );
   }
 }

@@ -13,6 +13,9 @@ import { Column } from 'src/app/models/column.model';
   styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
+
+  getData=[];
+
   constructor(
     public boardService: BoardService
   ) {}
@@ -31,6 +34,7 @@ export class BoardComponent implements OnInit {
   //   }
   // )
   this.getColumns();
+  // this.getData=this.getData
 
   }
 
@@ -42,6 +46,31 @@ export class BoardComponent implements OnInit {
 
 
 // #Add Card
+
+  // onAddCard(
+  //   text: string,
+  //   columnId: number, 
+  //   startDateTime: string,
+  //   endDateTime: string,
+  //   description: string,
+  //   priority: string,
+  //   // status: string
+  //   ) {
+  //   if(text) {
+  //     this.boardService.addCard(text, 
+  //       columnId, 
+  //       startDateTime,
+  //        endDateTime, 
+  //        description, 
+  //        priority, 
+  //       //  status
+  //       ).subscribe((result:any) =>{
+  //         console.log(result.title)
+  //       }, error =>{
+  //         console.log(error);
+  //       })
+  //   }
+  // }
 
   onAddCard(
     text: string,
@@ -60,27 +89,13 @@ export class BoardComponent implements OnInit {
          description, 
          priority, 
         //  status
-        )
+        ).subscribe((result:any) =>{
+          console.log(result.title)
+        }, error =>{
+          console.log(error);
+        })
     }
   }
-
-  // onAddCard(
-  //   text: string,
-  //   columnId: number, 
-  //   startDateTime: string,
-  //   endDateTime: string,
-  //   description: string,
-  //   priority: string,
-  //   // status: string
-  //   ) {
-  //   if(text) {
-  //     this.boardService.onAddCard(text).subscribe((result:any) =>{
-  //       console.log(result.text)
-  //     }, error =>{
-  //       console.log(error);
-  //     })
-  //   }
-  // }
 
 
 
@@ -99,13 +114,26 @@ export class BoardComponent implements OnInit {
   }
 
 
+  // getColumns(){
+  //   this.boardService.getColumn().subscribe((result:any) =>{
+  //     this
+  //           console.log(result)
+  //         }, error =>{
+  //           console.log(error);
+  //         })
+  // }
+
+
   getColumns(){
-    this.boardService.getColumn().subscribe((result:any) =>{
-            console.log(result)
+    this.boardService.getColumn().subscribe(data =>{
+      this.getData = data.columnData
+            console.log(data)
           }, error =>{
             console.log(error);
           })
   }
+
+
    // #Delete Card
 
   onDeleteCard(cardId: number, columnId: number){
@@ -155,19 +183,17 @@ export class BoardComponent implements OnInit {
 
 // #Delete Comment
 
+  // onDeleteComment(comment, columnId, item){
+  //   this.boardService.deleteComment(columnId, item.id, comment.id)
+  // }
+
   onDeleteComment(comment, columnId, item){
-    this.boardService.deleteComment(columnId, item.id, comment.id)
+    this.boardService.deleteComment(columnId, item.id, comment.id).subscribe((result:any) =>{
+            console.log(result)
+          }, error =>{
+            console.log(error);
+          })
   }
-
-
-//   onDeleteComment(comment, columnId, item){
-//     this.boardService.deleteComment(columnId, item.id, comment.id).subscribe((result:any) =>{
-//       console.log(result)
-//     }, error =>{
-//       console.log(error);
-//     })
-// }
-
 
 
 
