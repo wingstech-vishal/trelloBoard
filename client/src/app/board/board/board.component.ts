@@ -15,6 +15,9 @@ import { Column } from 'src/app/models/column.model';
 export class BoardComponent implements OnInit {
 
   getData=[];
+  getCardData=[];
+
+  
 
   constructor(
     public boardService: BoardService
@@ -24,7 +27,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('BOARD - INIT')
-    console.log(this.boardService.getBoard$())
+    // console.log(this.boardService.getBoard$())
 
     //  #Get Columns
 
@@ -35,6 +38,7 @@ export class BoardComponent implements OnInit {
   // )
   this.getColumns();
   // this.getData=this.getData
+  this.getCard();
 
   }
 
@@ -44,8 +48,56 @@ export class BoardComponent implements OnInit {
     this.boardService.changeColumnColor(color, columnId)
   }
 
+  // #Delete Column
 
-// #Add Card
+  // onDeleteColumn(columnId: number){
+  //   this.boardService.deleteColumn(columnId)
+  // }
+
+  onDeleteColumn(columnId: number){
+    this.boardService.deleteColumn(columnId).subscribe((result:any) =>{
+            console.log(result)
+          }, error =>{
+            console.log(error);
+          })
+   }
+
+
+  // #get Columns
+
+  // getColumns(){
+  //   this.boardService.getColumn().subscribe((result:any) =>{
+  //     this
+  //           console.log(result)
+  //         }, error =>{
+  //           console.log(error);
+  //         })
+  // }
+
+
+  getColumns(){
+    this.boardService.getColumn().subscribe(data =>{
+      this.getData = data.columnData
+            console.log(data)
+          }, error =>{
+            console.log(error);
+          })
+  }
+
+
+  // #get Card
+
+  getCard(){
+    this.boardService.getCard().subscribe(data =>{
+      this.getCardData = data.cardData
+            console.log(data)
+          }, error =>{
+            console.log(error);
+          })
+  }
+
+
+  // #Add Card
 
   // onAddCard(
   //   text: string,
@@ -72,7 +124,7 @@ export class BoardComponent implements OnInit {
   //   }
   // }
 
-  onAddCard(
+  addCard(
     text: string,
     columnId: number, 
     startDateTime: string,
@@ -82,55 +134,21 @@ export class BoardComponent implements OnInit {
     // status: string
     ) {
     if(text) {
-      this.boardService.addCard(text, 
+      this.boardService.addCard(
+        text, 
         columnId, 
         startDateTime,
-         endDateTime, 
-         description, 
-         priority, 
+        endDateTime, 
+        description, 
+        priority, 
+        
         //  status
         ).subscribe((result:any) =>{
-          console.log(result.title)
+          console.log(result.text)
         }, error =>{
           console.log(error);
         })
     }
-  }
-
-
-
-  // #Delete Column
-
-  // onDeleteColumn(columnId: number){
-  //   this.boardService.deleteColumn(columnId)
-  // }
-
-  onDeleteColumn(columnId: number){
-    this.boardService.deleteColumn(columnId).subscribe((result:any) =>{
-            console.log(result)
-          }, error =>{
-            console.log(error);
-          })
-  }
-
-
-  // getColumns(){
-  //   this.boardService.getColumn().subscribe((result:any) =>{
-  //     this
-  //           console.log(result)
-  //         }, error =>{
-  //           console.log(error);
-  //         })
-  // }
-
-
-  getColumns(){
-    this.boardService.getColumn().subscribe(data =>{
-      this.getData = data.columnData
-            console.log(data)
-          }, error =>{
-            console.log(error);
-          })
   }
 
 
