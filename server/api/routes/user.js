@@ -9,6 +9,8 @@ const jwt = require('jsonwebtoken');
 const checkToken = require('../middleware/check-auth');
 const app = require('../../app');
 
+
+//Create new user / Signup api
 router.post('/signup', (req, res, next) => {
     // res.status(200).json({
     //     message: 'User get message'
@@ -44,10 +46,12 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
-router.get('/signup', (req, res, next) => {
-    res.render('signup.ejs')
-})
+// router.get('/signup', (req, res, next) => {
+//     res.render('signup.ejs')
+// })
 
+
+//Login api
 router.post('/login', (req, res, next) => {
     User.find({ username: req.body.username })
     .exec()
@@ -93,6 +97,9 @@ router.post('/login', (req, res, next) => {
     })
 })
 
+
+
+//Get all users
 router.get('/', (req, res, next) => {
     // res.status(200).json({
     //     message: 'Student get request'
@@ -109,6 +116,47 @@ router.get('/', (req, res, next) => {
         res.status(500).json({
             error: err
         });
+    })
+})
+
+
+//Update user info
+router.put('/:id', (req, res, next) => {
+    console.log(req.params.id);
+    User.findOneAndUpdate({ _id: req.params.id }, {
+        $set: {
+            username: req.body.username,
+            phone: req.body.phone,
+            email: req.body.email,
+        }
+    })
+    .then(result => {
+        res.status(200).json({
+            updated_user: result
+        })
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        })
+    })
+})
+
+
+//Delete User
+router.delete('/:id', (req, res, next) => {
+    User.remove( { _id: req.params.id } )
+    .then(result => {
+        res.status(200).json({
+            message: 'Deleted Successfully',
+            result: result
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        })
     })
 })
 

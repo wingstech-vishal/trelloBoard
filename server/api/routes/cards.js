@@ -52,10 +52,11 @@ router.put('/:id', (req, res, next) => {
     console.log(req.params.id);
     Card.findOneAndUpdate({ _id: req.params.id }, {
         $set: {
+            title: req.body.title,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
             description: req.body.description,
-            category: req.body.category
+            priority: req.body.category
         }
     })
     .then(result => {

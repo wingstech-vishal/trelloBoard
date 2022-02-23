@@ -9,10 +9,11 @@ const cardSchema =  new mongoose.Schema({
     startDate: String,
     endDate: String,
     description: String,
-    priority: String ,
+    priority: String,
     likes: [{type: ObjectId, ref:"Card"}],
     comments: [{text: String, postedBy:{type: ObjectId, ref:"Card"}}],
     postedBy: {type: ObjectId, ref:"Card"}
 })
+
 
 module.exports = mongoose.model('Card', cardSchema);
