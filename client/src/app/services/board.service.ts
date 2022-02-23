@@ -128,7 +128,7 @@ export class BoardService {
       startDateTime: startDateTime,
       endDateTime: endDateTime,
       description: description,
-      priority: priority,
+      priority: priority,  
       // status: status,
       like: 0,
       comments: [],
