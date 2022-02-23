@@ -8,7 +8,7 @@ import { DialogBodyComponent } from 'src/app/components/dialog/dialog-body/dialo
   styleUrls: ['./board-item.component.scss']
 })
 export class BoardItemComponent implements OnInit {
-
+  // getCardData=[];
   @Input() item;
   @Output() emitText: EventEmitter<{id: number; text:string; item:any;}> = new EventEmitter();
   @Output() emitCardItem: EventEmitter<{card: any; increase:boolean}> = new EventEmitter();
@@ -16,6 +16,7 @@ export class BoardItemComponent implements OnInit {
   
   commentInput= ""
   open = false;
+  boardService: any;
 
 
   constructor(
@@ -23,6 +24,7 @@ export class BoardItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // this.getCard();
   }
 
   onOpenComment(){
@@ -55,6 +57,14 @@ export class BoardItemComponent implements OnInit {
   }
 
 
+  // getCard(){
+  //   this.boardService.getCard().subscribe(data =>{
+  //     this.getCardData = data.cardData
+  //           console.log(data)
+  //         }, error =>{
+  //           console.log(error);
+  //         })
+  // }
   
 
   // onUpdateCard(){

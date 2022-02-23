@@ -8,13 +8,13 @@ const Card = require('../model/card');
 router.post('/', (req, res, next) => {
     const card = new Card({
         _id: new mongoose.Types.ObjectId,
-        title: req.body.title,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
+        text: req.body.text,
+        startDateTime: req.body.startDateTime,
+        endDateTime: req.body.endDateTime,
         description: req.body.description,
         priority: req.body.priority
     })
-
+ console.log("CardData" + card)
     card.save()
     .then(result => {
         console.log(result);
@@ -52,11 +52,10 @@ router.put('/:id', (req, res, next) => {
     console.log(req.params.id);
     Card.findOneAndUpdate({ _id: req.params.id }, {
         $set: {
-            title: req.body.title,
-            startDate: req.body.startDate,
-            endDate: req.body.endDate,
+            startDateTime: req.body.startDateTime,
+            endDateTime: req.body.endDateTime,
             description: req.body.description,
-            priority: req.body.category
+            priority: req.body.priority
         }
     })
     .then(result => {

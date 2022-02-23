@@ -22,22 +22,22 @@ export class BoardService {
       title: 'To Do',
       color: '#009886',
       list: [
-        {
-          id: 1,
-          text: 'Example card item',
-          startDateTime: "18-Feb-2022 03:46 PM" ,
-          endDateTime: "18-Feb-2022 03:46 PM" ,
-          description: 'Trello board  example',
-          priority: 'list component' ,
-          // status: 'pending',
-          like: 1,
-          comments: [
-            { 
-              id: 1,
-              text: 'Some comment'
-            }
-          ]
-        },
+        // {
+        //   id: 1,
+        //   text: 'Example card item',
+        //   startDateTime: "18-Feb-2022 03:46 PM" ,
+        //   endDateTime: "18-Feb-2022 03:46 PM" ,
+        //   description: 'Trello board  example',
+        //   priority: 'list component' ,
+        //   // status: 'pending',
+        //   like: 1,
+        //   comments: [
+        //     { 
+        //       id: 1,
+        //       text: 'Some comment'
+        //     }
+        //   ]
+        // },
       ]
     },
   ]
@@ -47,26 +47,26 @@ export class BoardService {
   API = 'http://localhost:3000';
 
 
-  private board: Column[] = this.initBoard
-  private board$ = new BehaviorSubject<Column[]>(this.initBoard)
+  // private board: Column[] = this.initBoard
+  // private board$ = new BehaviorSubject<Column[]>(this.initBoard)
 
-  getBoard$() {
-    return this.board$.asObservable()
-  }
+  // getBoard$() {
+  //   return this.board$.asObservable()
+  // }
 
 
   // #Change Color
 
   changeColumnColor(color: string, columnId: number) {
-    this.board = this.board.map((column: Column) => {
-      if (column.id === columnId) {
-        column.color = color;
-      }
-      return column;
-    });
-    this.board$.next([...this.board]);
+    // this.board = this.board.map((column: Column) => {
+    //   if (column.id === columnId) {
+    //     column.color = color;
+    //   }
+    //   return column;
+    // });
+    // this.board$.next([...this.board]);
 
-    // return this.http.post<any>(this.API + '/columns', newColumn );
+    // return this.http.post<any>(this.API + '/columns', columnId );
 
   }
 
@@ -81,9 +81,9 @@ export class BoardService {
       list: [],
     };
 
-    this.board = [...this.board, newColumn];
-    this.board$.next([...this.board]);
-    
+    // this.board = [...this.board, newColumn];
+    // this.board$.next([...this.board]);
+    // console.log("column data" + newColumn)
     return this.http.post<any>(this.API + '/columns', newColumn );
 
   }
@@ -92,9 +92,10 @@ export class BoardService {
     // #Delete Column
 
     deleteColumn(columnId) {
-      this.board = this.board.filter((column: Column) => column.id !== columnId);
-      this.board$.next([...this.board]);
-      return this.http.delete<any>(this.API + '/columns', columnId );
+      // this.board = this.board.filter((column: Column) => column.id !== columnId);
+      // this.board$.next([...this.board]);
+      
+      return this.http.delete<any>(this.API + '/columns/:id', columnId );
     } 
 
 
@@ -104,11 +105,17 @@ export class BoardService {
     return this.http.get<any>(this.API + '/columns');
   }
 
+  // #get Card data
+
+  getCard(): Observable<any> {
+    return this.http.get<any>(this.API + '/cards/all');
+  }
 
 // #Add Card
 
-  addCard(text: string, 
-     columnId: number, 
+  addCard(
+    text: string, 
+    columnId: number, 
     startDateTime: string,
     endDateTime: string,
     description: string,
@@ -121,7 +128,7 @@ export class BoardService {
       startDateTime: startDateTime,
       endDateTime: endDateTime,
       description: description,
-      priority: priority,
+      priority: priority,  
       // status: status,
       like: 0,
       comments: [],
@@ -129,30 +136,34 @@ export class BoardService {
     
     // console.log(newCard)
     
-    this.board = this.board.map((column: Column) => {
-      if (column.id === columnId) {
-        column.list = [newCard, ...column.list];
-      }
-      return column;
-    });
+    // this.board = this.board.map((column: Column) => {
+    //   if (column.id === columnId) {
+    //     column.list = [newCard, ...column.list];
+    //   }
+    //   return column;
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
+console.log("DAta" + newCard)
 
     return this.http.post<any>(this.API + '/cards', newCard );
+    
   }
+
+ 
   
   
    // #Delete Card
 
   deleteCard(cardId: number, columnId: number) {
-    this.board = this.board.map((column: Column) => {
-      if (column.id === columnId) {
-        column.list = column.list.filter((card: Card) => card.id !== cardId);
-      }
-      return column;
-    });
+    // this.board = this.board.map((column: Column) => {
+    //   if (column.id === columnId) {
+    //     column.list = column.list.filter((card: Card) => card.id !== cardId);
+    //   }
+    //   return column;
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
 
     // return this.http.delete<any>(this.API + '/cards', columnId );
   }
@@ -161,29 +172,29 @@ export class BoardService {
    // #Change Like 
 
   changeLike(cardId: number, columnId: number, increase: boolean) {
-    this.board = this.board.map((column: Column) => {
-      if (column.id === columnId) {
-        const list = column.list.map((card: Card) => {
-          if (card.id === cardId) {
-            if (increase) {
-              card.like++;
-            } else {
-              if (card.like > 0) {
-                card.like--;
-              }
-            }
-          }
-          return card;
-        });
+    // this.board = this.board.map((column: Column) => {
+    //   if (column.id === columnId) {
+    //     const list = column.list.map((card: Card) => {
+    //       if (card.id === cardId) {
+    //         if (increase) {
+    //           card.like++;
+    //         } else {
+    //           if (card.like > 0) {
+    //             card.like--;
+    //           }
+    //         }
+    //       }
+    //       return card;
+    //     });
 
-        column.list = list;
-        return column;
-      } else {
-        return column;
-      }
-    });
+    //     column.list = list;
+    //     return column;
+    //   } else {
+    //     return column;
+    //   }
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
 
    return this.http.put<any>(this.API + '/likes', columnId );
   }
@@ -192,25 +203,25 @@ export class BoardService {
   // #Add Comment
 
   addComment(columnId: number, cardId: number, text: string) {
-    this.board = this.board.map((column: Column) => {
-      if (column.id === columnId) {
-        const list = column.list.map((card: Card) => {
-          if (card.id === cardId) {
-            const newComment = {
-              id: Date.now(),
-              text,
-            };
-            card.comments = [newComment, ...card.comments];
-          }
-          return card;
-        });
+    // this.board = this.board.map((column: Column) => {
+    //   if (column.id === columnId) {
+    //     const list = column.list.map((card: Card) => {
+    //       if (card.id === cardId) {
+    //         const newComment = {
+    //           id: Date.now(),
+    //           text,
+    //         };
+    //         card.comments = [newComment, ...card.comments];
+    //       }
+    //       return card;
+    //     });
 
-        column.list = list;
-      }
-      return column;
-    });
+    //     column.list = list;
+    //   }
+    //   return column;
+    // });
 
-    this.board$.next([...this.board]);
+    // this.board$.next([...this.board]);
 
     return this.http.put<any>(this.API + '/comment', columnId );
   }
@@ -219,22 +230,22 @@ export class BoardService {
   // #Delete Comment
 
   deleteComment(columnId, itemId, commentId) {
-    this.board = this.board.map((column: Column) => {
-      if(column.id === columnId) {
-        const list = column.list.map((item)=> {
-          if(item.id === itemId) {
-            item.comments = item.comments.filter((comment: Comment) => {
-              return comment.id !== commentId
-            })
-          }
-          return item
-        })
-        column.list = list
-      }
-      return column
-    })
-    this.board$.next([...this.board])
+    // this.board = this.board.map((column: Column) => {
+    //   if(column.id === columnId) {
+    //     const list = column.list.map((item)=> {
+    //       if(item.id === itemId) {
+    //         item.comments = item.comments.filter((comment: Comment) => {
+    //           return comment.id !== commentId
+    //         })
+    //       }
+    //       return item
+    //     })
+    //     column.list = list
+    //   }
+    //   return column
+    // })
+    // this.board$.next([...this.board])
 
-    // return this.http.delete<any>(this.API + '/comment', columnId );
+    return this.http.delete<any>(this.API + '/comment/:id', columnId );
   }
 }
