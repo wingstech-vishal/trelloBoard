@@ -6,6 +6,8 @@ import {
 } from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/services/board.service';
 import { Column } from 'src/app/models/column.model';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBodyComponent } from 'src/app/components/dialog/dialog-body/dialog-body.component';
 
 @Component({
   selector: 'app-board',
@@ -20,7 +22,8 @@ export class BoardComponent implements OnInit {
   
 
   constructor(
-    public boardService: BoardService
+    public boardService: BoardService,
+    private _matDialog: MatDialog,
   ) {}
 
   // columnsList: Column[];
@@ -54,9 +57,17 @@ export class BoardComponent implements OnInit {
   //   this.boardService.deleteColumn(columnId)
   // }
 
-  onDeleteColumn(columnId: number){
-    this.boardService.deleteColumn(columnId).subscribe((result:any) =>{
+  onDeleteColumn(columnId){
+    console.log(columnId)
+    let id = columnId._id
+    this.boardService.deleteColumn(id).subscribe((result:any) =>{
             console.log(result)
+            if(result.status) {
+              const index = this.getData.indexOf(columnId);
+                if (index >= 0) {
+                    this.getData.splice(index, 1);
+                }
+            }
           }, error =>{
             console.log(error);
           })
@@ -84,6 +95,8 @@ export class BoardComponent implements OnInit {
           })
   }
 
+  
+
 
   // #get Card
 
@@ -94,6 +107,18 @@ export class BoardComponent implements OnInit {
           }, error =>{
             console.log(error);
           })
+  }
+
+  openDialogBody(): void {
+    
+    const dialogRef = this._matDialog.open(DialogBodyComponent, {
+      data: { question: 'Add new card in' }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getCard();
+      
+    });
   }
 
 
@@ -124,33 +149,7 @@ export class BoardComponent implements OnInit {
   //   }
   // }
 
-  addCard(
-    text: string,
-    columnId: number, 
-    startDateTime: string,
-    endDateTime: string,
-    description: string,
-    priority: string,
-    // status: string
-    ) {
-    if(text) {
-      this.boardService.addCard(
-        text, 
-        columnId, 
-        startDateTime,
-        endDateTime, 
-        description, 
-        priority, 
-        
-        //  status
-        ).subscribe((result:any) =>{
-          console.log(result.text)
-        }, error =>{
-          console.log(error);
-        })
-    }
-  }
-
+  
 
    // #Delete Card
 

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "column-dialog-body.component.scss"
+    ],
+    "names": [],
+    "file": "column-dialog-body.component.css"
+}

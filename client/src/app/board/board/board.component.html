@@ -9,9 +9,9 @@
         <h2 class="m-0">{{ column.title }}</h2> 
        <div  class="d-flex justify-content-end align-items-center mb-2">
         <button mat-icon-button class="icon-edit" >
-          <mat-icon style="font-size: 20px;"  >edit</mat-icon>
+          <mat-icon style="font-size: 20px;">edit</mat-icon>
         </button>
-        <button mat-icon-button class="icon-delete" (click)="onDeleteColumn(column.id)">
+        <button mat-icon-button class="icon-delete" (click)="onDeleteColumn(column)">
           <mat-icon style="font-size: 20px;">delete</mat-icon>
         </button>
       </div>
@@ -21,9 +21,9 @@
 
       <!-- add new card in column -->
 
-      <app-dialog (emitText)="addCard($event, column.id)" [question]="'Add new card in ' + column.title + ' column'">
-        <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
-      </app-dialog>
+      <!-- <app-dialog  [question]="'Add new card in ' + column.title + ' column'"> -->
+        <button mat-raised-button class="w-100 mb-1 btn-add" (click)="openDialogBody()">+</button>
+      <!-- </app-dialog> -->
 
       <!-- color panel section -->
 

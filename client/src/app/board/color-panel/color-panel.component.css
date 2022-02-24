@@ -1,0 +1,13 @@
+.color-panel-item {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: ease-in-out opacity .1s;
+  transition: ease-in-out opacity .1s;
+}
+
+.color-panel-item:hover {
+  opacity: .6;
+}
+/*# sourceMappingURL=color-panel.component.css.map */

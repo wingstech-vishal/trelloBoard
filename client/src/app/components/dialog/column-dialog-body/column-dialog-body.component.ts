@@ -59,7 +59,7 @@ export class ColumnDialogBodyComponent implements OnInit {
   onSubmit(data){
     console.log(data.value);
     // this.boardService.addColumn(this.data).subscribe((result:any) =>{
-    //   console.log(result.data)
+    //   console.log(result)
     // }, error =>{
     //   console.log(error);
     // })

@@ -42,11 +42,11 @@ export class DialogBodyComponent implements OnInit {
 
  onSubmit(data){
     console.log(data.value);
-    // this.boardService.addColumn(this.data).subscribe((result:any) =>{
-    //   console.log(result.data)
-    // }, error =>{
-    //   console.log(error);
-    // })
+    this.boardService.addCard(this.data).subscribe((result:any) =>{
+      console.log(result)
+    }, error =>{
+      console.log(error);
+    })
   }
 
 }
