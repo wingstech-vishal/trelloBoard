@@ -9,6 +9,7 @@ import {BoardService} from 'src/app/services/board.service'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  // getData=[];
 
   // enteredTitle = "";
   // newColumn: Column
@@ -25,11 +26,16 @@ export class HeaderComponent implements OnInit {
 
   // #Add Column
 
- addColumn(title: string) {
+ addColumn(title: string ) {
     if(title){
-      
       this.boardService.addColumn(title).subscribe((result:any) =>{
-        console.log(result.title)
+        console.log(result)
+        // if(result.status) {
+        //   const index = this.getData.indexOf(columnId);
+        //     if (index >= 0) {
+        //         this.getData.splice(index, 1);
+        //     }
+        // }
       }, error =>{
         console.log(error);
       })

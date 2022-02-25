@@ -115,7 +115,7 @@ export class BoardService {
 
 // #Add Card
 
-  addCard(body ) {
+  addCard(body) {
     console.log(body)
     // const newCard: Card = {
     //   id: Date.now(),
@@ -145,8 +145,22 @@ export class BoardService {
     
   }
 
+    // add Card test
+
+    // addCard(text: string, startDateTime:string, endDateTime:string, description:string, priority:string,  columnId: number) {
+    //   const newCard: Card = {
+    //     id: Date.now(),
+    //     text:text,
+    //     startDateTime:startDateTime,
+    //     endDateTime:endDateTime,
+    //     description:description,
+    //     priority:priority,
+    //     like: 0,
+    //     comments: [],
+    //   };
+    //   return this.http.post<any>(this.API + '/cards', newCard );
+    // }
  
-  
   
    // #Delete Card
 

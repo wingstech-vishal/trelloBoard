@@ -95,8 +95,6 @@ export class BoardComponent implements OnInit {
           })
   }
 
-  
-
 
   // #get Card
 
@@ -147,6 +145,18 @@ export class BoardComponent implements OnInit {
   //         console.log(error);
   //       })
   //   }
+  // }
+
+
+  // test card add
+  // onAddCard(event: {id: number, text:string,startDateTime:string, endDateTime:string, description:string, priority:string}, columnId: number) {
+    
+  //     this.boardService.addCard(columnId, event.id, event.text, event.startDateTime, event.endDateTime, event.description, event.priority).subscribe((result:any) =>{
+  //     console.log(result)
+  //   }, error =>{
+  //     console.log(error);
+  //   })
+   
   // }
 
   
