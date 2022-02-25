@@ -98,11 +98,14 @@ router.put('/:id', (req, res, next) => {
 })
 
 router.delete('/:id', (req, res, next) => {
-    Column.deleteOne( { id: req.params.id })
+    console.log(">>>>>>>>>>>>>>>",req.params.id)
+    Column.findByIdAndDelete( req.params.id)
     .then(result => {
         res.status(200).json({
             message: 'Deleted Successfully',
-            result: result
+            result: result,
+            id: req.params.id,
+            status: true
         })
     })
     .catch(err => {
@@ -112,5 +115,16 @@ router.delete('/:id', (req, res, next) => {
         })
     })
 })
+
+
+// router.delete('/:id', function(req, res, next) {
+//     Column.findByIdAndRemove(req.params.id, (err, doc) => {
+//         if (!err) {
+//             console.log('Deleted Successfully!');
+//         } else {
+//             console.log('Failed to Delete user Details: ' + err);
+//         }
+//     });
+// })
 
 module.exports = router;

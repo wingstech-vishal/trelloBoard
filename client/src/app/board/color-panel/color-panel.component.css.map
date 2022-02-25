@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAA;EACb,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG;EAClB,MAAM,EAAE,OAAO;EACf,UAAU,EAAE,uBAAuB;CACtC;;AAED,AAAA,iBAAiB,AAAA,MAAM,CAAC;EACpB,OAAO,EAAE,EAAE;CACd",
+    "sources": [
+        "color-panel.component.scss"
+    ],
+    "names": [],
+    "file": "color-panel.component.css"
+}

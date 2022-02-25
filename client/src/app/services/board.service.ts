@@ -16,31 +16,31 @@ export class BoardService {
   onAddCard(text: string) {
     throw new Error('Method not implemented.');
   } 
-  private initBoard = [ 
-    {
-      id: 1,
-      title: 'To Do',
-      color: '#009886',
-      list: [
-        // {
-        //   id: 1,
-        //   text: 'Example card item',
-        //   startDateTime: "18-Feb-2022 03:46 PM" ,
-        //   endDateTime: "18-Feb-2022 03:46 PM" ,
-        //   description: 'Trello board  example',
-        //   priority: 'list component' ,
-        //   // status: 'pending',
-        //   like: 1,
-        //   comments: [
-        //     { 
-        //       id: 1,
-        //       text: 'Some comment'
-        //     }
-        //   ]
-        // },
-      ]
-    },
-  ]
+  // private initBoard = [ 
+  //   {
+  //     id: 1,
+  //     title: 'To Do',
+  //     color: '#009886',
+  //     list: [
+  //       // {
+  //       //   id: 1,
+  //       //   text: 'Example card item',
+  //       //   startDateTime: "18-Feb-2022 03:46 PM" ,
+  //       //   endDateTime: "18-Feb-2022 03:46 PM" ,
+  //       //   description: 'Trello board  example',
+  //       //   priority: 'list component' ,
+  //       //   // status: 'pending',
+  //       //   like: 1,
+  //       //   comments: [
+  //       //     { 
+  //       //       id: 1,
+  //       //       text: 'Some comment'
+  //       //     }
+  //       //   ]
+  //       // },
+  //     ]
+  //   },
+  // ]
 
   constructor(private http: HttpClient) { }
 
@@ -95,7 +95,9 @@ export class BoardService {
       // this.board = this.board.filter((column: Column) => column.id !== columnId);
       // this.board$.next([...this.board]);
       
-      return this.http.delete<any>(this.API + '/columns/:id', columnId );
+      return this.http.delete(this.API + '/columns' + '/' + columnId);
+
+      // return this.http.delete<any>(this.API + '/columns/:id', columnId );
     } 
 
 
@@ -113,26 +115,19 @@ export class BoardService {
 
 // #Add Card
 
-  addCard(
-    text: string, 
-    columnId: number, 
-    startDateTime: string,
-    endDateTime: string,
-    description: string,
-    priority: string,
-    // status: string 
-    ) {
-    const newCard: Card = {
-      id: Date.now(),
-      text:text,
-      startDateTime: startDateTime,
-      endDateTime: endDateTime,
-      description: description,
-      priority: priority,  
-      // status: status,
-      like: 0,
-      comments: [],
-    };
+  addCard(body ) {
+    console.log(body)
+    // const newCard: Card = {
+    //   id: Date.now(),
+    //   text:text,
+    //   startDateTime: startDateTime,
+    //   endDateTime: endDateTime,
+    //   description: description,
+    //   priority: priority,
+    //   // status: status,
+    //   like: 0,
+    //   comments: [],
+    // };
     
     // console.log(newCard)
     
@@ -144,9 +139,9 @@ export class BoardService {
     // });
 
     // this.board$.next([...this.board]);
-console.log("DAta" + newCard)
 
-    return this.http.post<any>(this.API + '/cards', newCard );
+
+    return this.http.post<any>(this.API + '/cards', body );
     
   }
 

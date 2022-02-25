@@ -1,0 +1,10 @@
+.comment-item {
+  border: 1px solid rgba(223, 223, 233, 0.37);
+}
+
+.icon-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+/*# sourceMappingURL=comment-item.component.css.map */
