@@ -3,6 +3,7 @@ const req = require('express/lib/request');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Column = require('../model/column');
+const Card = require('../model/card');
 
 //Post column data
 router.post('/', (req, res, next) => {
@@ -24,7 +25,7 @@ router.post('/', (req, res, next) => {
     //     }
     // })
     column.save()
-    // Column.isTitleExist()
+    // Column.isTitleExist() 
     .then(result => {
         res.status(200).json({
             newColumn: result
@@ -40,8 +41,27 @@ router.post('/', (req, res, next) => {
 
 //Get Column data
 router.get('/', (req, res, next) => {
-    Column.find()
-    // .populate("likes", "_id")
+    Column
+    // .find()
+    .aggregate([
+        { 
+            $lookup: {
+                from: 'card',
+                as: "cardId",
+                let: {cardId: "$_id"},
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: { $and: [
+                                { $eq: ["$cardId", "$$cardId"]}
+                            ]}
+                        }
+                    }
+                ]
+            }
+        }
+    ])
+    // .populate( {path: 'cardId', select: ['text', 'startDateTime', 'endDateTime']} )
     .then(result => {
         res.status(200).json({
             columnData: result
@@ -53,6 +73,7 @@ router.get('/', (req, res, next) => {
             error: err
         });
     })
+    console.log("check for card id", this.cardId);
 })
 
 //Update column data

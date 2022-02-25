@@ -52,6 +52,7 @@ router.put('/:id', (req, res, next) => {
     console.log(req.params.id);
     Card.findOneAndUpdate({ _id: req.params.id }, {
         $set: {
+            text: req.body.text,
             startDateTime: req.body.startDateTime,
             endDateTime: req.body.endDateTime,
             description: req.body.description,

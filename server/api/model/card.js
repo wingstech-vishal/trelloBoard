@@ -10,9 +10,9 @@ const cardSchema =  new mongoose.Schema({
     endDateTime: String,
     description: String,
     priority: String,
-    likes: [{type: ObjectId, ref:"Card"}],
-    comments: [{text: String, postedBy:{type: ObjectId, ref:"Card"}}],
-    postedBy: {type: ObjectId, ref:"Card"}
+    likes: [{type: ObjectId, ref:""}],
+    comments: [{text: String, postedBy:{type: ObjectId, ref:""}}],
+    postedBy: {type: ObjectId, ref:""}
 })
 
 
