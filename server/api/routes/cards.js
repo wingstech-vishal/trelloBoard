@@ -3,6 +3,7 @@ const req = require('express/lib/request');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Card = require('../model/card');
+const column = require('../model/column');
 
 //Post card data
 router.post('/', (req, res, next) => {
@@ -12,7 +13,9 @@ router.post('/', (req, res, next) => {
         startDateTime: req.body.startDateTime,
         endDateTime: req.body.endDateTime,
         description: req.body.description,
-        priority: req.body.priority
+        priority: req.body.priority,
+        columnId : req.body.columnId
+
     })
  console.log("CardData" + card)
     card.save()

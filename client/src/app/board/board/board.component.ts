@@ -41,7 +41,6 @@ export class BoardComponent implements OnInit {
   // )
   this.getColumns();
   // this.getData=this.getData
-  this.getCard();
 
   }
 
@@ -88,7 +87,10 @@ export class BoardComponent implements OnInit {
 
   getColumns(){
     this.boardService.getColumn().subscribe(data =>{
-      this.getData = data.columnData
+      this.getData = data.columnData;
+  this.getCard();
+
+      console.log(this.getData)
             console.log(data)
           }, error =>{
             console.log(error);
@@ -100,22 +102,34 @@ export class BoardComponent implements OnInit {
 
   getCard(){
     this.boardService.getCard().subscribe(data =>{
-      this.getCardData = data.cardData
+      this.getCardData = data.cardData;
+      this.getCardData.filter((data) => {
+        this.getData.map((data2) =>{
+          if(data.columnId == data2._id) {
+            data2.list.push(data);
+          return data2
+
+          }
+        });
+      });
+      console.log(this.getData)
             console.log(data)
           }, error =>{
             console.log(error);
           })
   }
 
-  openDialogBody(): void {
-    
+  openDialogBody(id:string): void {
+    console.log(id)
     const dialogRef = this._matDialog.open(DialogBodyComponent, {
-      data: { question: 'Add new card in' }
+      data: { question: 'Add new card in' ,columnId: id}
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.getCard();
-      
+
+      console.log(result);
+      // this.getCard();
+      this.getColumns();
     });
   }
 

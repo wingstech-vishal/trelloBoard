@@ -47,13 +47,13 @@ router.get('/', (req, res, next) => {
         { 
             $lookup: {
                 from: 'card',
-                as: "cardId",
-                let: {cardId: "$_id"},
+                as: "list",
+                let: {list: "$_id"},
                 pipeline: [
                     {
                         $match: {
                             $expr: { $and: [
-                                { $eq: ["$cardId", "$$cardId"]}
+                                { $eq: ["$list", "$$list"]}
                             ]}
                         }
                     }
@@ -73,7 +73,7 @@ router.get('/', (req, res, next) => {
             error: err
         });
     })
-    console.log("check for card id", this.cardId);
+    // console.log("check for card id", this.cardId);
 })
 
 //Update column data

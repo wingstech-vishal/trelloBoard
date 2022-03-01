@@ -7,19 +7,19 @@
     <mat-accordion  >
       <mat-expansion-panel >
         
-        <mat-expansion-panel-header *ngIf="item.text.length > 0">
-          <strong>Title:-</strong>{{ item.text[0].text }}
+        <mat-expansion-panel-header >
+          <strong>Title:-</strong>{{ item.text }}
         </mat-expansion-panel-header>
         <hr>
-         <p *ngIf="item.text.length > 0"><strong>Start Date/Time:- &nbsp;</strong>{{ item.text[0].startDateTime }}</p>
+         <p><strong>Start Date/Time:- &nbsp;</strong>{{ item.startDateTime }}</p>
          <hr>
-        <p  *ngIf="item.text.length > 0"><strong>End Date/Time:- &nbsp;</strong>{{ item.text[0].endDateTime }}</p>
+        <p ><strong>End Date/Time:- &nbsp;</strong>{{ item.endDateTime }}</p>
         <hr>
-        <p *ngIf="item.text.length > 0"><strong>Description:- &nbsp;</strong>{{ item.text[0].description }}</p>
+        <p><strong>Description:- &nbsp;</strong>{{ item.description }}</p>
         <hr>
-        <p *ngIf="item.text.length > 0" ><strong>Priority:- &nbsp;</strong>{{ item.text[0].priority }}</p>
+        <p ><strong>Priority:- &nbsp;</strong>{{ item.priority }}</p>
         <hr>
-        <!-- <p *ngIf="item.text.length > 0" ><strong>Status:- &nbsp;</strong>{{ item.text[0].status }}</p> 
+        <!-- <p ><strong>Status:- &nbsp;</strong>{{ item.status }}</p> 
         <hr> -->
         <mat-action-row>
           <button mat-button color="primary" (click)="onEdit(item)" >EDIT</button>

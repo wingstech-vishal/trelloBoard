@@ -22,6 +22,7 @@ export class DialogBodyComponent implements OnInit {
   ];
 
   userId:any;
+  dialogObj: any = {};
 
 
   constructor( public dialogRef: MatDialogRef<DialogBodyComponent>,
@@ -34,10 +35,10 @@ export class DialogBodyComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.userId = this.data?.cardData;
     
-    // this.data = this.data?.cardData;
-    // console.log("this.userId",this.userId);
+    this.data.columnId = this.data.columnId;
+    
+    console.log("this.userId",this.data.columnId);
   }
 
  onSubmit(data){

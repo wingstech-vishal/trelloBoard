@@ -21,7 +21,10 @@ export class BoardItemComponent implements OnInit {
 
   constructor(
     private _matDialog: MatDialog,
-  ) {}
+
+  ) {
+    console.log("test" +this.item)
+  }
 
   ngOnInit(): void {
     // this.getCard();
