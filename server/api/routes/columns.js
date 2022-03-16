@@ -98,7 +98,7 @@ router.put('/:id', (req, res, next) => {
 })
 
 router.delete('/:id', (req, res, next) => {
-    console.log(">>>>>>>>>>>>>>>",req.params.id)
+    console.log(">>>>",req.params.id)
     Column.findByIdAndDelete( req.params.id)
     .then(result => {
         res.status(200).json({

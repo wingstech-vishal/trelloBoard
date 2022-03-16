@@ -99,13 +99,17 @@ export class BoardService {
 
       // return this.http.delete<any>(this.API + '/columns/:id', columnId );
     } 
-
+    
 
   // #get column data
-
   getColumn(): Observable<any> {
     return this.http.get<any>(this.API + '/columns');
   }
+
+  // #Update Column data
+  // editColumn(): Observable<any> {
+  //   return this.http.get<any>(this.API + '/columns');
+  // }
 
   // #get Card data
 
@@ -180,81 +184,81 @@ export class BoardService {
 
    // #Change Like 
 
-  changeLike(cardId: number, columnId: number, increase: boolean) {
-    // this.board = this.board.map((column: Column) => {
-    //   if (column.id === columnId) {
-    //     const list = column.list.map((card: Card) => {
-    //       if (card.id === cardId) {
-    //         if (increase) {
-    //           card.like++;
-    //         } else {
-    //           if (card.like > 0) {
-    //             card.like--;
-    //           }
-    //         }
-    //       }
-    //       return card;
-    //     });
+  // changeLike(cardId: number, columnId: number, increase: boolean) {
+  //   // this.board = this.board.map((column: Column) => {
+  //   //   if (column.id === columnId) {
+  //   //     const list = column.list.map((card: Card) => {
+  //   //       if (card.id === cardId) {
+  //   //         if (increase) {
+  //   //           card.like++;
+  //   //         } else {
+  //   //           if (card.like > 0) {
+  //   //             card.like--;
+  //   //           }
+  //   //         }
+  //   //       }
+  //   //       return card;
+  //   //     });
 
-    //     column.list = list;
-    //     return column;
-    //   } else {
-    //     return column;
-    //   }
-    // });
+  //   //     column.list = list;
+  //   //     return column;
+  //   //   } else {
+  //   //     return column;
+  //   //   }
+  //   // });
 
-    // this.board$.next([...this.board]);
+  //   // this.board$.next([...this.board]);
 
-   return this.http.put<any>(this.API + '/likes', columnId );
-  }
+  //  return this.http.put<any>(this.API + '/likes', columnId );
+  // }
 
 
   // #Add Comment
 
-  addComment(columnId: number, cardId: number, text: string) {
-    // this.board = this.board.map((column: Column) => {
-    //   if (column.id === columnId) {
-    //     const list = column.list.map((card: Card) => {
-    //       if (card.id === cardId) {
-    //         const newComment = {
-    //           id: Date.now(),
-    //           text,
-    //         };
-    //         card.comments = [newComment, ...card.comments];
-    //       }
-    //       return card;
-    //     });
+  // addComment(columnId: number, cardId: number, text: string) {
+  //   // this.board = this.board.map((column: Column) => {
+  //   //   if (column.id === columnId) {
+  //   //     const list = column.list.map((card: Card) => {
+  //   //       if (card.id === cardId) {
+  //   //         const newComment = {
+  //   //           id: Date.now(),
+  //   //           text,
+  //   //         };
+  //   //         card.comments = [newComment, ...card.comments];
+  //   //       }
+  //   //       return card;
+  //   //     });
 
-    //     column.list = list;
-    //   }
-    //   return column;
-    // });
+  //   //     column.list = list;
+  //   //   }
+  //   //   return column;
+  //   // });
 
-    // this.board$.next([...this.board]);
+  //   // this.board$.next([...this.board]);
 
-    return this.http.put<any>(this.API + '/comment', columnId );
-  }
+  //   return this.http.put<any>(this.API + '/comment', columnId );
+  // }
 
 
   // #Delete Comment
 
-  deleteComment(columnId, itemId, commentId) {
-    // this.board = this.board.map((column: Column) => {
-    //   if(column.id === columnId) {
-    //     const list = column.list.map((item)=> {
-    //       if(item.id === itemId) {
-    //         item.comments = item.comments.filter((comment: Comment) => {
-    //           return comment.id !== commentId
-    //         })
-    //       }
-    //       return item
-    //     })
-    //     column.list = list
-    //   }
-    //   return column
-    // })
-    // this.board$.next([...this.board])
+  // deleteComment(columnId, itemId, commentId) {
+  //   // this.board = this.board.map((column: Column) => {
+  //   //   if(column.id === columnId) {
+  //   //     const list = column.list.map((item)=> {
+  //   //       if(item.id === itemId) {
+  //   //         item.comments = item.comments.filter((comment: Comment) => {
+  //   //           return comment.id !== commentId
+  //   //         })
+  //   //       }
+  //   //       return item
+  //   //     })
+  //   //     column.list = list
+  //   //   }
+  //   //   return column
+  //   // })
+  //   // this.board$.next([...this.board])
 
-    return this.http.delete<any>(this.API + '/comment/:id', columnId );
-  }
+  //   return this.http.delete<any>(this.API + '/comment/:id', columnId );
+  // }
 }

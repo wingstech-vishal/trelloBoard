@@ -198,14 +198,14 @@ export class BoardComponent implements OnInit {
   // }
 
 
-  onChangeLike(event:{card: any, increase: boolean}, columnId: number){
-    const{card: {id}, increase} = event
-    this.boardService.changeLike(id, columnId, increase).subscribe((result:any) =>{
-      console.log(result)
-    }, error =>{
-      console.log(error);
-    })
-}
+//   onChangeLike(event:{card: any, increase: boolean}, columnId: number){
+//     const{card: {id}, increase} = event
+//     this.boardService.changeLike(id, columnId, increase).subscribe((result:any) =>{
+//       console.log(result)
+//     }, error =>{
+//       console.log(error);
+//     })
+// }
 
 // #Add Comment
 
@@ -213,13 +213,13 @@ export class BoardComponent implements OnInit {
   //   this.boardService.addComment(columnId, event.id, event.text)
   // }
 
-  onAddComment(event: {id: number, text:string}, columnId: number){
-    this.boardService.addComment(columnId, event.id, event.text).subscribe((result:any) =>{
-      console.log(result)
-    }, error =>{
-      console.log(error);
-    })
-}
+//   onAddComment(event: {id: number, text:string}, columnId: number){
+//     this.boardService.addComment(columnId, event.id, event.text).subscribe((result:any) =>{
+//       console.log(result)
+//     }, error =>{
+//       console.log(error);
+//     })
+// }
 
 
 // #Delete Comment
@@ -228,13 +228,13 @@ export class BoardComponent implements OnInit {
   //   this.boardService.deleteComment(columnId, item.id, comment.id)
   // }
 
-  onDeleteComment(comment, columnId, item){
-    this.boardService.deleteComment(columnId, item.id, comment.id).subscribe((result:any) =>{
-            console.log(result)
-          }, error =>{
-            console.log(error);
-          })
-  }
+  // onDeleteComment(comment, columnId, item){
+  //   this.boardService.deleteComment(columnId, item.id, comment.id).subscribe((result:any) =>{
+  //           console.log(result)
+  //         }, error =>{
+  //           console.log(error);
+  //         })
+  // }
 
 
 
