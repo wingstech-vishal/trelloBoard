@@ -107,9 +107,11 @@ export class BoardService {
   }
 
   // #Update Column data
-  // editColumn(): Observable<any> {
-  //   return this.http.get<any>(this.API + '/columns');
-  // }
+  updateColumn(columnId): Observable<any> {
+
+    return this.http.get<any>(this.API + '/columns/:id', columnId);
+
+  }
 
   // #get Card data
 
@@ -168,7 +170,7 @@ export class BoardService {
   
    // #Delete Card
 
-  deleteCard(cardId: number, columnId: number) {
+   onDeleteCard(cardId: number, columnId: number) {
     // this.board = this.board.map((column: Column) => {
     //   if (column.id === columnId) {
     //     column.list = column.list.filter((card: Card) => card.id !== cardId);
@@ -178,7 +180,20 @@ export class BoardService {
 
     // this.board$.next([...this.board]);
 
-    // return this.http.delete<any>(this.API + '/cards', columnId );
+    return this.http.delete<any>(this.API + '/cards/:id'+ cardId );
+  }
+
+  updateCard(cardId: number, columnId: number) {
+    // this.board = this.board.map((column: Column) => {
+    //   if (column.id === columnId) {
+    //     column.list = column.list.filter((card: Card) => card.id !== cardId);
+    //   }
+    //   return column;
+    // });
+
+    // this.board$.next([...this.board]);
+
+    // return this.http.delete<any>(this.API + '/cards/:id', columnId );
   }
 
 

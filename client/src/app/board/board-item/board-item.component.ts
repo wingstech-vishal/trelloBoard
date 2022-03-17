@@ -43,10 +43,13 @@ export class BoardItemComponent implements OnInit {
     this.emitCardItem.emit({card, increase});
   }
 
-  onCardDelete(id: number){
-    this.emitDeleteCard.emit(id)
-  }
+  // onCardDelete(id: number){
+  //   this.emitDeleteCard.emit(id)
+  // }
 
+  onDeleteCard(cardId: number){
+    this.boardService.deleteCard(cardId)
+  }
   onEdit(data: any){
     const dialogRef = this._matDialog.open(DialogBodyComponent, {
       data: { cardData: data }

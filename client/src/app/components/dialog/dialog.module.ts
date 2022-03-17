@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 
 
@@ -30,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     MatSelectModule,
     MatCardModule,
+    ReactiveFormsModule
     
   ],
   exports: [

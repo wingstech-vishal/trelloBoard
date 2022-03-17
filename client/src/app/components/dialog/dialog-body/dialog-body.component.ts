@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog'
 import {BoardService} from 'src/app/services/board.service'
 
-interface Status {
+interface Priority {
   value: string;
   viewValue: string;
 }
@@ -15,10 +15,11 @@ interface Status {
 export class DialogBodyComponent implements OnInit {
 
 
-  status: Status[] = [
-    {value: 'holding-0', viewValue: 'Holding'},
-    {value: 'Started-1', viewValue: 'Started'},
-    {value: 'finished-2', viewValue: 'Finished'},
+  selectFormControl = new FormControl('', Validators.required);
+  priority: Priority[] = [
+    {value: 'high-0', viewValue: 'High'},
+    {value: 'low-1', viewValue: 'Low'},
+    {value: 'medium-2', viewValue: 'Medium'},
   ];
 
   userId:any;

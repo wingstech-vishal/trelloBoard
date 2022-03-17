@@ -93,81 +93,81 @@ router.delete('/:id', (req, res, next) => {
 })
 
 //Like api
-router.put('/likes/:id', (req, res, next) => {
-    Card.findByIdAndUpdate(req.params.id, {
-        $push:{likes: req.body.likes}
-    }, {
-        new: true 
-    }).exec((err, result) => {
-        if(err) {
-            return res.status(500).json({
-                error: err
-            })
-        } else{
-            res.json(result)
-        }
-    })
-})
+// router.put('/likes/:id', (req, res, next) => {
+//     Card.findByIdAndUpdate(req.params.id, {
+//         $push:{likes: req.body.likes}
+//     }, {
+//         new: true 
+//     }).exec((err, result) => {
+//         if(err) {
+//             return res.status(500).json({
+//                 error: err
+//             })
+//         } else{
+//             res.json(result)
+//         }
+//     })
+// })
 
-//Unlike api
-router.put('/unlike/:id', (req, res, next) => {
-    Card.findByIdAndUpdate(req.params.id, {
-        $pull:{likes: req.body.likes}
-    }, {
-        new: true 
-    }).exec((err, result) => {
-        if(err) {
-            return res.status(500).json({
-                error: err
-            })
-        } else{
-            res.json(result)
-        }
-    })
-})
+// //Unlike api
+// router.put('/unlike/:id', (req, res, next) => {
+//     Card.findByIdAndUpdate(req.params.id, {
+//         $pull:{likes: req.body.likes}
+//     }, {
+//         new: true 
+//     }).exec((err, result) => {
+//         if(err) {
+//             return res.status(500).json({
+//                 error: err
+//             })
+//         } else{
+//             res.json(result)
+//         }
+//     })
+// })
 
 
-//Comment api
-router.put('/comment/:id', (req, res, next) => {
-    const comment = {
-        text: req.body.text,
-        postedBy: req.use
-    }
-    Card.findByIdAndUpdate(req.params.id, {
-        $push:{likes: req.body.likes}
-    }, {
-        new: true 
-    }).exec((err, result) => {
-        if(err) {
-            return res.status(500).json({
-                error: err
-            })
-        } else{
-            res.json(result)
-        }
-    })
-})
+// //Comment api
+// router.put('/comment/:id', (req, res, next) => {
+//     const comment = {
+//         text: req.body.text,
+//         postedBy: req.use
+//     }
+//     Card.findByIdAndUpdate(req.params.id, {
+//         $push:{likes: req.body.likes}
+//     }, {
+//         new: true 
+//     }).exec((err, result) => {
+//         if(err) {
+//             return res.status(500).json({
+//                 error: err
+//             })
+//         } else{
+//             res.json(result)
+//         }
+//     })
+// })
 
-// Delete comment api
-router.put('/comment/:id', (req, res, next) => {
-    const comment = {
-        text: req.body.text,
-        postedBy: req.use
-    }
-    Card.findByIdAndUpdate(req.params.id, {
-        $pull:{likes: req.body.likes}
-    }, {
-        new: true 
-    }).exec((err, result) => {
-        if(err) {
-            return res.status(500).json({
-                error: err
-            })
-        } else{
-            res.json(result)
-        }
-    })
-})
+// // Delete comment api
+// router.put('/comment/:id', (req, res, next) => {
+//     const comment = {
+//         text: req.body.text,
+//         postedBy: req.use
+//     }
+//     Card.findByIdAndUpdate(req.params.id, {
+//         $pull:{likes: req.body.likes}
+//     }, {
+//         new: true 
+//     }).exec((err, result) => {
+//         if(err) {
+//             return res.status(500).json({
+//                 error: err
+//             })
+//         } else{
+//             res.json(result)
+//         }
+//     })
+// })
 
 
 

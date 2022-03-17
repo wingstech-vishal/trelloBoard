@@ -73,6 +73,25 @@ export class BoardComponent implements OnInit {
    }
 
 
+
+  //  update column
+  onUpdateColumn(columnId){
+    console.log(columnId)
+    let id = columnId._id
+    this.boardService.updateColumn(id).subscribe((result:any) =>{
+            console.log(result)
+            if(result.status) {
+              const index = this.getData.indexOf(columnId);
+                if (index >= 0) {
+                    this.getData.splice(index, 1);
+                }
+            }
+          }, error =>{
+            console.log(error);
+          })
+   }
+
+
   // #get Columns
 
   // getColumns(){
@@ -177,9 +196,9 @@ export class BoardComponent implements OnInit {
 
    // #Delete Card
 
-  onDeleteCard(cardId: number, columnId: number){
-    this.boardService.deleteCard(cardId, columnId)
-  }
+  // onDeleteCard(cardId: number, columnId: number){
+  //   this.boardService.deleteCard(cardId, columnId)
+  // }
 
   // onDeleteCard(cardId: number, columnId: number){
   //   this.boardService.deleteCard(cardId, columnId).subscribe((result:any) =>{
