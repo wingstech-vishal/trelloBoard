@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {AppRoutingModule} from '../app-routing.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatButtonModule} from '@angular/material/button';
@@ -13,6 +14,7 @@ import { BoardItemComponent } from './board-item/board-item.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import {DialogModule} from '../components/dialog/dialog.module';
 import { ColorPanelComponent } from './color-panel/color-panel.component'
+import {HeaderModule} from '../header/header.module'
 
 
 
@@ -32,7 +34,9 @@ import { ColorPanelComponent } from './color-panel/color-panel.component'
     MatInputModule,
     MatExpansionModule,
     DialogModule,
-    ReactiveFormsModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HeaderModule
   ],
   exports: [
     BoardComponent

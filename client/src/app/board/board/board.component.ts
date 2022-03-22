@@ -77,7 +77,7 @@ export class BoardComponent implements OnInit {
   //  update column
   onUpdateColumn(columnId){
     console.log(columnId)
-    let id = columnId._id
+    let id = columnId.id
     this.boardService.updateColumn(id).subscribe((result:any) =>{
             console.log(result)
             if(result.status) {
@@ -90,7 +90,19 @@ export class BoardComponent implements OnInit {
             console.log(error);
           })
    }
+    
 
+  //  onUpdateColumn(data: any){
+  //   const dialogRef = this._matDialog.open(DialogBodyComponent, {
+  //     data: { cardData: data }
+  //   });
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     // console.log('Compose dialog was closed!');
+  //     // if(result.event == 'Update'){
+  //     //   this.updateData(result.data);
+  //     // }
+  //   });
+  // }
 
   // #get Columns
 
@@ -106,8 +118,8 @@ export class BoardComponent implements OnInit {
 
   getColumns(){
     this.boardService.getColumn().subscribe(data =>{
-      this.getData = data.columnData;
-  this.getCard();
+    this.getData = data.columnData;
+    this.getCard();
 
       console.log(this.getData)
             console.log(data)
@@ -151,6 +163,8 @@ export class BoardComponent implements OnInit {
       this.getColumns();
     });
   }
+
+
 
 
   // #Add Card

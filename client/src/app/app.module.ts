@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header/header.module';
 import {BoardModule} from './board/board.module';
 import {HttpClientModule } from '@angular/common/http';
+import {UserModule} from './user/user.module'
+import {BoardService} from './services/board.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,10 +20,11 @@ import {HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HeaderModule,
     BoardModule,
-    HttpClientModule
+    HttpClientModule,
+    UserModule
   
   ],
-  providers: [],
+  providers: [BoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

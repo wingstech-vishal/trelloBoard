@@ -1,4 +1,6 @@
+
 <div class="container-fluid">
+  <!-- <app-header></app-header> -->
   <div cdkDropListGroup class="row">
     <div
       class="col-sm-6 col-lg-3 mb-3"
@@ -6,18 +8,20 @@
     >
       <!-- Column Title -->
       <div class="d-flex justify-content-between align-items-center p-2 shadow-sm column-header"  >        
-        <h2 contenteditable="true" class="m-0" (click)="onUpdateColumn(column.title)">{{ column.title }}</h2> 
+        <h2  class="m-0">{{ column.title }}</h2> 
        <div  class="d-flex justify-content-end align-items-center mb-2">
-        <button mat-icon-button class="icon-edit" >
-          <mat-icon style="font-size: 20px;">edit</mat-icon>
-        </button>
+        
+        <app-column-dialog (emitText)="onUpdateColumn(column.title)" question="Edit Column Name">
+          <button mat-icon-button class="icon-edit" >
+            <mat-icon style="font-size: 20px;" (click)="onUpdateColumn(column.title)">edit</mat-icon>
+          </button>
+        </app-column-dialog>
+        
         <button mat-icon-button class="icon-delete" (click)="onDeleteColumn(column)">
           <mat-icon style="font-size: 20px;">delete</mat-icon>
         </button>
       </div>
       </div>
-
-
 
       <!-- add new card in column -->
 
@@ -89,3 +93,4 @@
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>

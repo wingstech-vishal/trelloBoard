@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBodyComponent } from 'src/app/components/dialog/dialog-body/dialog-body.component';
-
+import {BoardService} from'src/app/services/board.service'
 @Component({
   selector: 'app-board-item',
   templateUrl: './board-item.component.html',
@@ -16,10 +16,12 @@ export class BoardItemComponent implements OnInit {
   
   commentInput= ""
   open = false;
-  boardService: any;
+
+  getData=[];
 
 
   constructor(
+    public boardService: BoardService,
     private _matDialog: MatDialog,
 
   ) {
@@ -27,7 +29,7 @@ export class BoardItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getCard();
+    // this.onDeleteCard(cardId);
   }
 
   onOpenComment(){
@@ -47,9 +49,30 @@ export class BoardItemComponent implements OnInit {
   //   this.emitDeleteCard.emit(id)
   // }
 
-  onDeleteCard(cardId: number){
-    this.boardService.deleteCard(cardId)
-  }
+  // Delete Card 
+
+  onDeleteCard(cardId){
+    console.log(cardId)
+    let id = cardId._id
+    this.boardService.deleteCard(id).subscribe((result:any) =>{
+            console.log(result)
+            if(result.status) {
+              const index = this.getData.indexOf(cardId);
+                if (index >= 0) {
+                    this.getData.splice(index, 1);
+                }
+            }
+          }, error =>{
+            console.log(error);
+          })
+   }
+
+  // onDeleteCard(cardId: number){
+  //   this.boardService.deleteCard(cardId)
+  // }
+
+
+  
   onEdit(data: any){
     const dialogRef = this._matDialog.open(DialogBodyComponent, {
       data: { cardData: data }
@@ -61,6 +84,8 @@ export class BoardItemComponent implements OnInit {
       // }
     });
   }
+
+
 
 
   // getCard(){

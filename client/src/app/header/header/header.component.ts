@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Column } from 'src/app/models/column.model';
 import {BoardService} from 'src/app/services/board.service'
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,12 +16,24 @@ export class HeaderComponent implements OnInit {
   // isLoading = false;
   // private mode = "create";
   // private postId: string;
-  
-  constructor( public boardService: BoardService)
-   { }
+  username = '';
+  constructor( public boardService: BoardService,
+    private _router: Router)
+   {
+    this.boardService.getUserName()
+    .subscribe(
+      data => this.username= data.toString(),
+      error => this._router.navigate(['/main/login'])
+    )
+    }
 
   ngOnInit(): void {
 
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this._router.navigate(['/main/login']);
   }
 
   // #Add Column

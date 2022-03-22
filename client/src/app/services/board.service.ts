@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Card, Column, Comment } from '../models/column.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BoardService {
+  //   }
+  //   return column;
+  // });
+  // this.board$.next([...this.board]);
+  // return this.http.post<any>(this.API + '/columns', columnId );
+  submitRegister //   return column;
+    (value: any) {
+      throw new Error('Method not implemented.');
+  }
   AddCard(text: string) {
     throw new Error('Method not implemented.');
   }
@@ -170,7 +179,7 @@ export class BoardService {
   
    // #Delete Card
 
-   onDeleteCard(cardId: number, columnId: number) {
+   deleteCard(cardId: number) {
     // this.board = this.board.map((column: Column) => {
     //   if (column.id === columnId) {
     //     column.list = column.list.filter((card: Card) => card.id !== cardId);
@@ -180,7 +189,7 @@ export class BoardService {
 
     // this.board$.next([...this.board]);
 
-    return this.http.delete<any>(this.API + '/cards/:id'+ cardId );
+    return this.http.delete<any>(this.API + '/cards' + '/' + cardId );
   }
 
   updateCard(cardId: number, columnId: number) {
@@ -193,7 +202,7 @@ export class BoardService {
 
     // this.board$.next([...this.board]);
 
-    // return this.http.delete<any>(this.API + '/cards/:id', columnId );
+    return this.http.delete<any>(this.API + '/cards/:id' + cardId );
   }
 
 
@@ -276,4 +285,32 @@ export class BoardService {
 
   //   return this.http.delete<any>(this.API + '/comment/:id', columnId );
   // }
+
+
+  // User Registration
+
+  newRegister(body:any){
+    return this.http.post(this.API + '/users/register', body,{
+      observe:'body'
+    });
+  }
+
+
+  // login api
+
+  login(body:any){
+    return this.http.post(this.API +'/users/login', body,{
+      observe:'body'
+    });
+  }
+
+  // get user name
+
+  getUserName() {
+    return this.http.get( this.API +'/users/username', {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token'))
+    });
+  }
+
 }
