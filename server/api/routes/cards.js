@@ -1,96 +1,20 @@
 const express = require('express');
-const req = require('express/lib/request');
 const router = express.Router();
 const mongoose = require('mongoose');
+const { createCard, getAllCards, updateCard, deleteCard } = require('../controller/cardController');
 const Card = require('../model/card');
-const column = require('../model/column');
 
 //Post card data
-router.post('/', (req, res, next) => {
-    const card = new Card({
-        _id: new mongoose.Types.ObjectId,
-        text: req.body.text,
-        startDateTime: req.body.startDateTime,
-        endDateTime: req.body.endDateTime,
-        description: req.body.description,
-        priority: req.body.priority,
-        columnId : req.body.columnId
-
-    })
- console.log("CardData" + card)
-    card.save()
-    .then(result => {
-        console.log(result);
-        res.status(200).json({
-            newCard: result
-        })
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
-        })
-    });
-});
+router.post('/', createCard);
 
 //Get card data
-router.get('/all', (req, res, next) => {
-    Card.find()
-    // .populate("likes", "_id")
-    .then(result => {
-        res.status(200).json({
-            cardData: result
-        })
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
-        });
-    })
-})
+router.get('/all',getAllCards)
 
-//Update card data
-router.put('/:id', (req, res, next) => {
-    console.log(req.params.id);
-    Card.findOneAndUpdate({ _id: req.params.id }, {
-        $set: {
-            text: req.body.text,
-            startDateTime: req.body.startDateTime,
-            endDateTime: req.body.endDateTime,
-            description: req.body.description,
-            priority: req.body.priority
-        }
-    })
-    .then(result => {
-        res.status(200).json({
-            updated_card: result
-        })
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
-        })
-    })
-})
+//Update And Drag-Drop card data
+router.put('/:id', updateCard)
 
 //Delete card 
-router.delete('/:id', (req, res, next) => {
-    Card.remove({ _id: req.params.id })
-    .then(result => {
-        res.status(200).json({
-            message: 'Deleted Successfully',
-            result: result
-        })
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({
-            error: err
-        })
-    })
-})
+router.delete('/:id', deleteCard)
 
 //Like api
 // router.put('/likes/:id', (req, res, next) => {
@@ -168,7 +92,5 @@ router.delete('/:id', (req, res, next) => {
 //         }
 //     })
 // })
-
-
 
 module.exports = router;

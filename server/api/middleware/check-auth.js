@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const bcrypt =  require('bcryptjs');
 // const { JWT_SECRET } = require('');
 const student = require('../model/student');
 const User = require('../model/users');

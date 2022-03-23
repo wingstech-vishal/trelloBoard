@@ -164,57 +164,15 @@
 
 
 var express = require('express');
-var router = express.Router();
-var User = require('../model/users');
 var jwt = require('jsonwebtoken');
+const { registerUser, loginUser } = require('../controller/userController');
+var router = express.Router();
 
 // new user register api
-
-router.post('/register',  function(req,res,next){
-  var user = new User({
-    email: req.body.email,
-    username: req.body.username,
-    password: User.hashPassword(req.body.password),
-    userType: req.body.userType,
-  });
-
-  let promise = user.save();
-
-  promise.then(function(doc){
-    return res.status(201).json(doc);
-  })
-
-  promise.catch(function(err){
-    return res.status(501).json({message: 'Error registering user.'})
-  })
-})
+router.post('/register', registerUser)
 
 // login user api
-
-router.post('/login', function(req,res,next){
-   let promise = User.findOne({email:req.body.email}).exec();
-
-   promise.then(function(doc){
-    if(doc) {
-      if(doc.isValid(req.body.password)){
-          // generate token
-          let token = jwt.sign({username:doc.username},'secret', {expiresIn : '3h'});
-
-          return res.status(200).json({message:''+ token});
-
-      } else {
-        return res.status(501).json({message:'Invalid Credentials'});
-      }
-    }
-    else {
-      return res.status(501).json({message:'User email is not registered.'})
-    }
-   });
-
-   promise.catch(function(err){
-     return res.status(501).json({message:'Some internal error'});
-   })
-})
+router.post('/login',loginUser)
 
 // Get all user api
 
@@ -224,8 +182,7 @@ router.get('/username', verifyToken, function(req,res,next){
 
 var decodedToken='';
 function verifyToken(req,res,next){
-  let token = req.query.token;
-
+  const token = req.headers.authorization.split(' ')[1];
   jwt.verify(token,'secret', function(err, tokendata){
     if(err){
       return res.status(400).json({message:' Unauthorized request'});
