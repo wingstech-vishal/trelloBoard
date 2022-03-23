@@ -18,7 +18,7 @@ const routes: Routes = [
       ]
   },
   {path: 'dash' , component: BoardComponent},
-  // {path: 'dash' , component: HeaderComponent},
+  // {path: 'header' , component: HeaderComponent},
 ];
 
 @NgModule({
