@@ -8,11 +8,13 @@ import { HeaderModule } from './header/header.module';
 import {BoardModule} from './board/board.module';
 import {HttpClientModule } from '@angular/common/http';
 import {UserModule} from './user/user.module'
-import {BoardService} from './services/board.service'
+import {BoardService} from './services/board.service';
+import { DashComponent } from './dash/dash.component'
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashComponent,
   ],
   imports: [
     BrowserModule,

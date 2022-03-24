@@ -8,6 +8,7 @@ import { BoardService } from 'src/app/services/board.service';
 import { Column } from 'src/app/models/column.model';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBodyComponent } from 'src/app/components/dialog/dialog-body/dialog-body.component';
+import { EditcolumnDialogBodyComponent } from 'src/app/components/dialog/editcolumn-dialog-body/editcolumn-dialog-body.component';
 
 @Component({
   selector: 'app-board',
@@ -75,21 +76,37 @@ export class BoardComponent implements OnInit {
 
 
   //  update column
-  onUpdateColumn(columnId){
-    console.log(columnId)
-    let id = columnId.id
-    this.boardService.updateColumn(id).subscribe((result:any) =>{
-            console.log(result)
-            if(result.status) {
-              const index = this.getData.indexOf(columnId);
-                if (index >= 0) {
-                    this.getData.splice(index, 1);
-                }
-            }
-          }, error =>{
-            console.log(error);
-          })
-   }
+  // onUpdateColumn(columnId){
+  //   console.log(columnId)
+  //   let id = columnId.id
+  //   this.boardService.updateColumn(id).subscribe((result:any) =>{
+  //           console.log(result)
+  //           if(result.status) {
+  //             const index = this.getData.indexOf(columnId);
+  //               if (index >= 0) {
+  //                   this.getData.splice(index, 1);
+  //               }
+  //           }
+  //         }, error =>{
+  //           console.log(error);
+  //         })
+  //  }
+
+
+     
+   onUpdateColumn(data: any){
+     
+    const dialogRef = this._matDialog.open(EditcolumnDialogBodyComponent, {
+      data: { cardData: data }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // console.log('Compose dialog was closed!');
+      // if(result.event == 'Update'){
+      //   this.updateData(result.data);
+      // }
+    });
+  }
     
 
   //  onUpdateColumn(data: any){

@@ -26,6 +26,7 @@ export class DialogBodyComponent implements OnInit {
   dialogObj: any = {};
 
 
+
   constructor( public dialogRef: MatDialogRef<DialogBodyComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
     public boardService: BoardService
@@ -34,6 +35,8 @@ export class DialogBodyComponent implements OnInit {
     onNoClick(): void {
       this.dialogRef.close();
     }
+    
+    
 
   ngOnInit(): void {
     

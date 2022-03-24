@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit {
   constructor( public boardService: BoardService,
     private _router: Router)
    {
-    this.boardService.getUserName()
-    .subscribe(
-      data => this.username= data.toString(),
-      error => this._router.navigate(['/main/login'])
-    )
+    // this.boardService.getUserName()
+    // .subscribe(
+    //   data => this.username= data.toString(),
+    //   error => this._router.navigate(['/main/login'])
+    // )
     }
 
   ngOnInit(): void {

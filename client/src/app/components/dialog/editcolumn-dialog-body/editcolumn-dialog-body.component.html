@@ -1,0 +1,24 @@
+<div >
+    <form #columnForm="ngForm" (ngSubmit)="onSubmit(columnForm)" >
+    <h3>{{data.question}}</h3>
+    <!-- <mat-form-field>
+      <input type="hidden" id="texens" name="user" value="texens" />
+    </mat-form-field>     -->
+    <!-- title -->
+    <mat-form-field class="w-200">
+        <mat-label>Update Column Title</mat-label>
+        <input matInput type="text"
+        name="title"
+        ngModel
+        required
+        minlength="3"
+        placeholder="title"  #title="ngModel" [(ngModel)] = "data.text">
+        <mat-error *ngIf="title.invalid">Please enter a Column title.</mat-error>
+    </mat-form-field>
+      
+    <div mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="data.text" cdkFocusInitial color="primary" type="submit" (click)="updateColumn(title)">Update</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+</form>
+</div>

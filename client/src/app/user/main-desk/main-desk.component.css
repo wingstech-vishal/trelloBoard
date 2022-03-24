@@ -1,0 +1,25 @@
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.headerLogo {
+  margin-top: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 2rem;
+  color: lightskyblue;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+}
+/*# sourceMappingURL=main-desk.component.css.map */

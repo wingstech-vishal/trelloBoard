@@ -202,7 +202,7 @@ export class BoardService {
 
     // this.board$.next([...this.board]);
 
-    return this.http.delete<any>(this.API + '/cards/:id' + cardId );
+    return this.http.put<any>(this.API + '/cards/:id', cardId );
   }
 
 

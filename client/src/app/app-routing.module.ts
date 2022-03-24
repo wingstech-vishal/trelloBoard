@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BoardComponent } from './board/board/board.component';
+import { DashComponent } from './dash/dash.component';
 import { HeaderComponent } from './header/header/header.component';
 import { LoginComponent } from './user/login/login.component';
 import { MainDeskComponent } from './user/main-desk/main-desk.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
       ]
   },
   {path: 'dash' , component: BoardComponent},
-  // {path: 'header' , component: HeaderComponent},
+  // {path: 'dash' , component: DashComponent},
+ //  {path: 'header' , component: HeaderComponent},
 ];
 
 @NgModule({

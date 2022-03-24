@@ -13,6 +13,8 @@ import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { ColumnDialogBodyComponent } from './column-dialog-body/column-dialog-body.component';
 import { ColumnDialogComponent } from './column-dialog/column-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import { EditcolumnDialogComponent } from './editcolumn-dialog/editcolumn-dialog.component';
+import { EditcolumnDialogBodyComponent } from './editcolumn-dialog-body/editcolumn-dialog-body.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {MatSelectModule} from '@angular/material/select';
     DialogComponent,
     DialogBodyComponent,
     ColumnDialogBodyComponent,
-    ColumnDialogComponent
+    ColumnDialogComponent,
+    EditcolumnDialogComponent,
+    EditcolumnDialogBodyComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,8 @@ import {MatSelectModule} from '@angular/material/select';
     FormsModule,
     MatSelectModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
     
   ],
   exports: [

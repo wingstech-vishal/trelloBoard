@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {DialogModule} from '../components/dialog/dialog.module'
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent
@@ -20,6 +21,7 @@ import {DialogModule} from '../components/dialog/dialog.module'
     MatToolbarModule,
     DialogModule,
     AppRoutingModule,
+   
    
   ],
   exports: [
