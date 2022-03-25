@@ -65,6 +65,7 @@ const getAllColumns = async (req,res,next) =>{
 
 //update column controller
 const updateColumn = async (req,res,next) =>{
+    console.log(req.params);
     try {
         const _id = req.params.id
         const result = await Column.findOneAndUpdate(_id,req.body,{

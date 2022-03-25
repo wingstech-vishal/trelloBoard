@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBodyComponent } from 'src/app/components/dialog/dialog-body/dialog-body.component';
+import { EditcardDialogBodyComponent } from 'src/app/components/dialog/editcard-dialog-body/editcard-dialog-body.component';
 import {BoardService} from'src/app/services/board.service'
 @Component({
   selector: 'app-board-item',
@@ -74,13 +75,17 @@ export class BoardItemComponent implements OnInit {
 
   
   onEdit(data: any){
-    const dialogRef = this._matDialog.open(DialogBodyComponent, {
+    console.log(data)
+    const dialogRef = this._matDialog.open(EditcardDialogBodyComponent, {
       data: { cardData: data }
+      
     });
     dialogRef.afterClosed().subscribe((result) => {
-      // console.log('Compose dialog was closed!');
-      // if(result.event == 'Update'){
-      //   this.updateData(result.data);
+      // console.log("result",result)
+      // for(let data in this.getData) {
+      //   if(result.cardData._id == this.getData[data]._id) {
+      //     this.getData[data].title = result.cardData.title;
+      //   }
       // }
     });
   }

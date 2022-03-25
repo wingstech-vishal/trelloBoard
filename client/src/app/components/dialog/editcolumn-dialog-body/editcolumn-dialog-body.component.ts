@@ -24,13 +24,16 @@ export class EditcolumnDialogBodyComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EditcolumnDialogBodyComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
-    public boardService: BoardService) { }
+    public boardService: BoardService) {
+      console.log(data);
+      this.columnId = this.data.cardData._id;
+     }
 
     onNoClick(): void {
       this.dialogRef.close();
     }
      
-     updateColumn(columnId){
+    updateColumn(columnId){
     console.log(columnId)
     let id = columnId.id
     this.boardService.updateColumn(id).subscribe((result:any) =>{
@@ -47,9 +50,9 @@ export class EditcolumnDialogBodyComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.data = {
-      text: this.data.cardData.title
-    };
+    // this.data = {
+    //   text: this.data.cardData.title
+    // };
     // this.route.paramMap.subscribe((paramMap: ParamMap) => {
     //   if (paramMap.has("columnId")) {
     //     this.mode = "edit";
@@ -74,7 +77,19 @@ export class EditcolumnDialogBodyComponent implements OnInit {
 
 
   onSubmit(data){
-    console.log(data.value);
+    console.log(data)
+    let body = {
+      id : this.columnId,
+      title: data.value.title
+    }
+    console.log(body)
+    this.boardService.updateColumn(body).subscribe((result:any) =>{
+      console.log(result)
+        
+
+    }, error =>{
+      console.log(error);
+    })
     // this.boardService.addColumn(this.data).subscribe((result:any) =>{
     //   console.log(result)
     // }, error =>{

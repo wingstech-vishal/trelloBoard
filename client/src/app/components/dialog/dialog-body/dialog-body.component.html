@@ -83,15 +83,14 @@
     ></textarea> -->
 
     <mat-label>Priority</mat-label>
-    <mat-select [formControl]="selectFormControl" required>
+    <mat-select  required [(ngModel)]="data.priority"
+    name="priority">
       <mat-option
         
         #priority="ngModel"
-        [(ngModel)]="data.priority"
-        name="priority"
         ngModel
         *ngFor="let priority of priority"
-        [value]="priority.value"
+        [value]="priority.viewValue"
       >
         {{ priority.viewValue }}
       </mat-option>

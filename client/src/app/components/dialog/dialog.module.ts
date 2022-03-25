@@ -15,6 +15,8 @@ import { ColumnDialogComponent } from './column-dialog/column-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
 import { EditcolumnDialogComponent } from './editcolumn-dialog/editcolumn-dialog.component';
 import { EditcolumnDialogBodyComponent } from './editcolumn-dialog-body/editcolumn-dialog-body.component';
+import { EditcardDialogComponent } from './editcard-dialog/editcard-dialog.component';
+import { EditcardDialogBodyComponent } from './editcard-dialog-body/editcard-dialog-body.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { EditcolumnDialogBodyComponent } from './editcolumn-dialog-body/editcolu
     ColumnDialogBodyComponent,
     ColumnDialogComponent,
     EditcolumnDialogComponent,
-    EditcolumnDialogBodyComponent
+    EditcolumnDialogBodyComponent,
+    EditcardDialogComponent,
+    EditcardDialogBodyComponent
   ],
   imports: [
     CommonModule,

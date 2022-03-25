@@ -12,12 +12,12 @@
         ngModel
         required
         minlength="3"
-        placeholder="title"  #title="ngModel" [(ngModel)] = "data.text">
+        placeholder="title"  #title="ngModel" [(ngModel)] = "data.cardData.title">
         <mat-error *ngIf="title.invalid">Please enter a Column title.</mat-error>
     </mat-form-field>
       
     <div mat-dialog-actions>
-    <button mat-raised-button [mat-dialog-close]="data.text" cdkFocusInitial color="primary" type="submit" (click)="updateColumn(title)">Update</button>
+    <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial color="primary" type="submit">Update</button>
     <button mat-button (click)="onNoClick()">Cancel</button>
     </div>
 </form>

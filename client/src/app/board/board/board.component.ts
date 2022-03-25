@@ -101,10 +101,12 @@ export class BoardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      // console.log('Compose dialog was closed!');
-      // if(result.event == 'Update'){
-      //   this.updateData(result.data);
-      // }
+      console.log("result",result)
+      for(let data in this.getData) {
+        if(result.cardData._id == this.getData[data]._id) {
+          this.getData[data].title = result.cardData.title;
+        }
+      }
     });
   }
     

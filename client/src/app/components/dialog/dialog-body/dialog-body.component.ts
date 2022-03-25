@@ -30,7 +30,9 @@ export class DialogBodyComponent implements OnInit {
   constructor( public dialogRef: MatDialogRef<DialogBodyComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
     public boardService: BoardService
-    ) {}
+    ) {
+      console.log("this.data>>",this.data);
+    }
 
     onNoClick(): void {
       this.dialogRef.close();

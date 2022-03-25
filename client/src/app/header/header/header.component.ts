@@ -42,12 +42,6 @@ export class HeaderComponent implements OnInit {
     if(title){
       this.boardService.addColumn(title).subscribe((result:any) =>{
         console.log(result)
-        // if(result.status) {
-        //   const index = this.getData.indexOf(columnId);
-        //     if (index >= 0) {
-        //         this.getData.splice(index, 1);
-        //     }
-        // }
       }, error =>{
         console.log(error);
       })
