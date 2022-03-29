@@ -11,15 +11,15 @@
     <input
       matInput
       type="text"
-      name="title"
+      name="text"
       ngModel
       required
       minlength="3"
       placeholder="Title"
-      #title="ngModel"
+      #text="ngModel"
       [(ngModel)]="data.text"
     />
-    <mat-error *ngIf="title.invalid">Please enter a Title.</mat-error>
+    <mat-error *ngIf="text.invalid">Please enter a Title.</mat-error>
   </mat-form-field>
 
   <!-- start date/time -->

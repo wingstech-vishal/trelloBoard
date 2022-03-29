@@ -63,7 +63,7 @@ export class EditcardDialogBodyComponent implements OnInit {
  onSubmit(data){
      let body = {
       id : this.cardId,    
-      title:data.value.title,
+      text:data.value.text,
       startDateTime:data.value.startDateTime ,
       endDateTime:data.value.endDateTime,
       description:data.value.description,

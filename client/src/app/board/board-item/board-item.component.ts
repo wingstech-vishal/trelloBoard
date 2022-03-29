@@ -81,12 +81,16 @@ export class BoardItemComponent implements OnInit {
       
     });
     dialogRef.afterClosed().subscribe((result) => {
-      // console.log("result",result)
-      // for(let data in this.getData) {
-      //   if(result.cardData._id == this.getData[data]._id) {
-      //     this.getData[data].title = result.cardData.title;
-      //   }
-      // }
+      console.log("result",result)
+      for(let data in this.getData) {
+        if(result.cardData._id == this.getData[data]._id) {
+          this.getData[data].text = result.cardData.text;
+          this.getData[data].startDateTime = result.cardData.startDateTime;
+          this.getData[data].endDateTime = result.cardData.endDateTime;
+          this.getData[data].description = result.cardData.description;
+          this.getData[data].priority = result.cardData.priority;
+        }
+      }
     });
   }
 

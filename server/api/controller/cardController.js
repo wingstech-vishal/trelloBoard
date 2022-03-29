@@ -41,7 +41,9 @@ const createCard = async(req,res,next) =>{
 const updateCard = async(req,res,next) =>{
     try {
         const _id = req.params.id
-        const result = await Card.findByIdAndUpdate(_id,req.body)
+        const result = await Card.findOneAndUpdate(_id,req.body,{
+            new:true
+        })
         if(!result){
             next(CustomErrorHandler.notExist('This Card is not exist'))
         }

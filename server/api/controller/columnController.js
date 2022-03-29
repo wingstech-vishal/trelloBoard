@@ -88,7 +88,7 @@ const updateColumn = async (req,res,next) =>{
 const deleteColumn = async (req,res,next) =>{
     try {
         const _id = req.params.id
-        const result = await Column.findOneAndRemove(_id,req.body)
+        const result = await Column.findByIdAndDelete(_id,req.body)
         if(!result){
             if(!result){
                 next(CustomErrorHandler.notExist('This Column is not exist'))
