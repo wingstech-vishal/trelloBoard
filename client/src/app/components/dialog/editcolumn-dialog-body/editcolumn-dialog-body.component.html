@@ -2,7 +2,7 @@
     <form #columnForm="ngForm" (ngSubmit)="onSubmit(columnForm)" >
     <h3>{{data.question}}</h3>
     <!-- <mat-form-field>
-      <input type="hidden" id="texens" name="user" value="texens" />
+      <input type="hidden" #id="ngModel" [(ngModel)] = "data.cardData._id" value="{{data.cardData._id}}" />
     </mat-form-field>     -->
     <!-- title -->
     <mat-form-field class="w-200">

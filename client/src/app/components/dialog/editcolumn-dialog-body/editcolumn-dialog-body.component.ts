@@ -34,9 +34,9 @@ export class EditcolumnDialogBodyComponent implements OnInit {
     }
      
     updateColumn(columnId){
-    console.log(columnId)
-    let id = columnId.id
-    this.boardService.updateColumn(id).subscribe((result:any) =>{
+    console.log("columnId",columnId);
+    let id = columnId.id;
+    /*this.boardService.updateColumn(id).subscribe((result:any) =>{
             console.log(result)
             // if(result.status) {
             //   const index = this.getData.indexOf(columnId);
@@ -46,7 +46,7 @@ export class EditcolumnDialogBodyComponent implements OnInit {
             // }
           }, error =>{
             console.log(error);
-          })
+          })*/
    }
 
   ngOnInit(): void {
@@ -77,16 +77,15 @@ export class EditcolumnDialogBodyComponent implements OnInit {
 
 
   onSubmit(data){
-    console.log(data)
+    //console.log("data",data);
     let body = {
       id : this.columnId,
       title: data.value.title
     }
-    console.log(body)
+
+    console.log("body",body);
     this.boardService.updateColumn(body).subscribe((result:any) =>{
       console.log(result)
-        
-
     }, error =>{
       console.log(error);
     })

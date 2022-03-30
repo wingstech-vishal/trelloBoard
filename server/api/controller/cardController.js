@@ -39,11 +39,10 @@ const createCard = async(req,res,next) =>{
 
 //Update And Drag-Drop Card Controller
 const updateCard = async(req,res,next) =>{
+    console.log(req.params);
     try {
         const _id = req.params.id
-        const result = await Card.findOneAndUpdate(_id,req.body,{
-            new:true
-        })
+        const result = await Card.findByIdAndUpdate(_id,req.body)
         if(!result){
             next(CustomErrorHandler.notExist('This Card is not exist'))
         }

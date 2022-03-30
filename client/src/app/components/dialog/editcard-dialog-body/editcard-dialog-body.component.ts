@@ -25,7 +25,7 @@ export class EditcardDialogBodyComponent implements OnInit {
   userId:any;
   dialogObj: any = {};
   cardId: any;
-
+  //card: { id: string; text: string; startDateTime: string; endDateTime: string; description: string; priority: string; };
 
 
   constructor( public dialogRef: MatDialogRef<EditcardDialogBodyComponent>,
@@ -43,13 +43,13 @@ export class EditcardDialogBodyComponent implements OnInit {
     
 
     updateCard(cardId){
-      console.log(cardId)
+      console.log("columnId",cardId)
       let id = cardId.id
-      this.boardService.updateCard(id).subscribe((result:any) =>{
-              console.log(result)
-            }, error =>{
-              console.log(error);
-            })
+      // this.boardService.updateCard(id).subscribe((result:any) =>{
+      //         console.log(result)
+      //       }, error =>{
+      //         console.log(error);
+      //       })
      }
     
 
@@ -69,7 +69,7 @@ export class EditcardDialogBodyComponent implements OnInit {
       description:data.value.description,
       priority:data.value.priority
     }
-    console.log(body); 
+    console.log("body",body); 
     this.boardService.updateCard(body).subscribe((result:any) =>{
       console.log(result)
     }, error =>{

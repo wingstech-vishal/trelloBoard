@@ -11,8 +11,8 @@ const cardSchema =  new mongoose.Schema({
     description: String,
     priority: String,
     columnId: String,
-    likes: [{type: ObjectId, ref:""}],
-    comments: [{text: String, postedBy:{type: ObjectId, ref:""}}],
+    // likes: [{type: ObjectId, ref:""}],
+    // comments: [{text: String, postedBy:{type: ObjectId, ref:""}}],
     postedBy: {type: ObjectId, ref:""}
 })
 

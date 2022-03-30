@@ -4,7 +4,9 @@
         <div mat-dialog-content>
         
           <h3>{{ data.question }}</h3>
-        
+          <!-- <mat-form-field>
+            <input type="hidden" #id="ngModel" [(ngModel)] = "data._id" value="{{data._id}}" />
+          </mat-form-field>  -->
           <!-- title -->
           <mat-form-field class="w-100">
             <mat-label>Add Title</mat-label>
@@ -112,7 +114,7 @@
         <div mat-dialog-actions>
           <button
             mat-raised-button
-            [mat-dialog-close]="[{text:data.text,description:data.description, priority:data.priority,  status:data.status, startDateTime:data.startDateTime, endDateTime:data.endDateTime }]"
+            [mat-dialog-close]="[{text:data.text, startDateTime:data.startDateTime, endDateTime:data.endDateTime, description:data.description, priority:data.priority}]"
             cdkFocusInitial
             color="primary"
             type="submit"
