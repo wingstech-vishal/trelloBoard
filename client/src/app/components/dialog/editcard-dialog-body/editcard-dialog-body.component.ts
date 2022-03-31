@@ -34,6 +34,7 @@ export class EditcardDialogBodyComponent implements OnInit {
     ) {
       this.data = this.data.cardData;
       console.log("this.data", this.data);
+      this.cardId = this.data._id;
     }
   
 
