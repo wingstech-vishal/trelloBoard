@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "editcard-dialog-body.component.scss"
+    ],
+    "names": [],
+    "file": "editcard-dialog-body.component.css"
+}
